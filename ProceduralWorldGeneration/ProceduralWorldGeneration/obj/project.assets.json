@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\luzil\\Desktop\\Programs\\C#\\ProceduralWorldGeneration\\ProceduralWorldGeneration\\ProceduralWorldGeneration.csproj",
+      "projectUniqueName": "C:\\Users\\luzil\\Desktop\\Programs\\C#\\RocnikovaPracePGV\\ProceduralWorldGeneration\\ProceduralWorldGeneration\\ProceduralWorldGeneration.csproj",
       "projectName": "ProceduralWorldGeneration",
-      "projectPath": "C:\\Users\\luzil\\Desktop\\Programs\\C#\\ProceduralWorldGeneration\\ProceduralWorldGeneration\\ProceduralWorldGeneration.csproj",
+      "projectPath": "C:\\Users\\luzil\\Desktop\\Programs\\C#\\RocnikovaPracePGV\\ProceduralWorldGeneration\\ProceduralWorldGeneration\\ProceduralWorldGeneration.csproj",
       "packagesPath": "C:\\Users\\luzil\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\luzil\\Desktop\\Programs\\C#\\ProceduralWorldGeneration\\ProceduralWorldGeneration\\obj\\",
+      "outputPath": "C:\\Users\\luzil\\Desktop\\Programs\\C#\\RocnikovaPracePGV\\ProceduralWorldGeneration\\ProceduralWorldGeneration\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\luzil\\AppData\\Roaming\\NuGet\\NuGet.Config",
