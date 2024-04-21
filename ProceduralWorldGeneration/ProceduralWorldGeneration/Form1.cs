@@ -8,29 +8,35 @@ namespace ProceduralWorldGeneration
         }
 
         // Globální promìnné
-        int y = 0, x = 0;
+        int grid = 50;
         int poziceX = 100, poziceY = 100;
         int sirkaVyska = 10;
+        Color barva;
 
         // Funkce pro generaci PictureBoxù
         private void novyPixel(int y, int x, Point location)
         {
+            // nový PictureBox
             PictureBox pictureBox = new PictureBox();
-            pictureBox.Name = "Pixel" + x + "x" + y;
+            // Vlastnosti PictureBox
+            pictureBox.Name = x + "x" + y;
             pictureBox.Width = sirkaVyska;
             pictureBox.Height = sirkaVyska;
             pictureBox.Tag = "pixel";
             pictureBox.Location = location;
 
             // Generace nejvyšších bodù
-            int RNG = Random.Shared.Next(10);
+            int RNG = Random.Shared.Next(20); //5%
+
             if (RNG == 0)
-                pictureBox.BackColor = Color.FromArgb(0, 0, 0);
+                barva = Color.FromArgb(8, 8, 8);
             else
-                pictureBox.BackColor = Color.FromArgb(255, 255, 255);
+                barva = Color.FromArgb(255, 255, 255);
 
+            pictureBox.BackColor = barva;
+
+            // Pøidání PictureBoxu do Form1
             this.Controls.Add(pictureBox);
-
         }
 
 
@@ -49,20 +55,17 @@ namespace ProceduralWorldGeneration
         private void Form1_Load(object sender, EventArgs e)
         {
 
-
-            for (int i = 0; i < 20; i++)
+            // Vybudovaní Gridu
+            for (int y = 0; y < grid; y++)
             {
-                for (int j = 0; j < 20; j++)
+                for (int x = 0; x < grid; x++)
                 {
                     Point pozice = new Point(poziceX, poziceY);
                     novyPixel(x, y, pozice);
                     poziceX += 10;
-                    x++;
                 }
                 poziceX = 100;
                 poziceY += 10;
-                x = 0;
-                y++;
             }
         }
     }
