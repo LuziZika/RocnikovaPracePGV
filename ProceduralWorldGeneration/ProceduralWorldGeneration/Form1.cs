@@ -9,9 +9,14 @@ namespace ProceduralWorldGeneration
 
         // Globální promìnné
         int grid = 50;
+        int indexRadku = 0;
+        int indexSloupcu = 0;
         int poziceX = 100, poziceY = 100;
         int sirkaVyska = 10;
         Color barva;
+        int RGB;
+
+        PictureBox[,] pictureBoxPole = new PictureBox[50,50];
 
         // Funkce pro generaci PictureBoxù
         private void novyPixel(int y, int x, Point location)
@@ -29,14 +34,53 @@ namespace ProceduralWorldGeneration
             int RNG = Random.Shared.Next(20); //5%
 
             if (RNG == 0)
-                barva = Color.FromArgb(8, 8, 8);
+                RGB = 8;
             else
-                barva = Color.FromArgb(255, 255, 255);
+                RGB = 255;
 
+            barva = Color.FromArgb(RGB, RGB, RGB);
             pictureBox.BackColor = barva;
+
+            // Uložení hodnot do Pole
+            pictureBoxPole[x,y] = pictureBox;
 
             // Pøidání PictureBoxu do Form1
             this.Controls.Add(pictureBox);
+        }
+
+        // Funkce pro uhlazení terénu
+        private void uhlazeniTerenu()
+        {
+            int x = 0;
+            int y = 0;
+            foreach (PictureBox pixel in Controls)
+            {
+                
+                if(pixel.Tag == "pixel")
+                {
+                    Console.WriteLine(pixel.Name + "  8");
+                    Console.WriteLine();
+                    if (pixel.BackColor == Color.FromArgb(255, 255, 255))
+                    {
+                        pictureBoxPole[y, x].BackColor = Color.Blue;
+                        Console.WriteLine(pictureBoxPole[x, y].Name);
+                        Console.WriteLine();
+                    }
+                    else if (pixel.BackColor == Color.FromArgb(8, 8, 8))
+                    {
+                        pictureBoxPole[y, x].BackColor = Color.Pink;
+                        Console.WriteLine("negr");
+                    }
+                    Console.WriteLine();
+                    x++;
+                    if(x != 0 && x % grid == 0)
+                    {
+                        x = 0;
+                        y++;
+                    }
+                }
+
+            }
         }
 
 
@@ -67,6 +111,14 @@ namespace ProceduralWorldGeneration
                 poziceX = 100;
                 poziceY += 10;
             }
+
+            uhlazeniTerenu();
+
+
+
+
+
+            
         }
     }
 }
