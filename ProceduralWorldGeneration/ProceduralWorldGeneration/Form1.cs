@@ -55,23 +55,40 @@ namespace ProceduralWorldGeneration
             int y = 0;
             foreach (PictureBox pixel in Controls)
             {
-                
                 if(pixel.Tag == "pixel")
                 {
-                    Console.WriteLine(pixel.Name + "  8");
-                    Console.WriteLine();
-                    if (pixel.BackColor == Color.FromArgb(255, 255, 255))
+                    if (pixel.BackColor != Color.FromArgb(255, 255, 255))
                     {
-                        pictureBoxPole[y, x].BackColor = Color.Blue;
-                        Console.WriteLine(pictureBoxPole[x, y].Name);
-                        Console.WriteLine();
+                        /*try
+                        {
+                            pictureBoxPole[y + 1, x].BackColor = Color.FromArgb(16, 16, 16);
+                        }
+                        catch 
+                        {
+                            Console.WriteLine("hiii");
+                        }
+                        try
+                        {
+                            pictureBoxPole[y, x + 1].BackColor = Color.FromArgb(16, 16, 16);
+                        }
+                        catch
+                        {
+                            Console.WriteLine("hiii");
+                        }
+                        try
+                        {
+                            pictureBoxPole[y, x - 1].BackColor = Color.FromArgb(16, 16, 16);
+                        }
+                        catch
+                        {
+                            
+                        }*/
+                        
+                        
+                        
+
+
                     }
-                    else if (pixel.BackColor == Color.FromArgb(8, 8, 8))
-                    {
-                        pictureBoxPole[y, x].BackColor = Color.Pink;
-                        Console.WriteLine("negr");
-                    }
-                    Console.WriteLine();
                     x++;
                     if(x != 0 && x % grid == 0)
                     {
