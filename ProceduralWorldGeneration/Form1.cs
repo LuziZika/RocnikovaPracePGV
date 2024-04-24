@@ -9,20 +9,19 @@ namespace ProceduralWorldGeneration
 
         // Globální promìnné
         int grid = 50;
-        int indexRadku = 0;
-        int indexSloupcu = 0;
-        int poziceX = 100, poziceY = 100;
         int sirkaVyska = 10;
+        int poziceSumu = 100;
         Color barva;
         int RGB;
 
-        PictureBox[,] pictureBoxPole = new PictureBox[50,50];
+        PictureBox[,] pictureBoxPole = new PictureBox[50, 50];
 
         // Funkce pro generaci PictureBoxù
         private void novyPixel(int y, int x, Point location)
         {
             // nový PictureBox
             PictureBox pictureBox = new PictureBox();
+            
             // Vlastnosti PictureBox
             pictureBox.Name = x + "x" + y;
             pictureBox.Width = sirkaVyska;
@@ -34,7 +33,7 @@ namespace ProceduralWorldGeneration
             int RNG = Random.Shared.Next(20); //5%
 
             if (RNG == 0)
-                RGB = 8;
+                RGB = 32;
             else
                 RGB = 255;
 
@@ -48,8 +47,30 @@ namespace ProceduralWorldGeneration
             this.Controls.Add(pictureBox);
         }
 
+        // Funkce pro vytvoøení Gridu
+        private void vytvoreniGridu(int grid, int pozice)
+        {
+            int poziceX = pozice;
+            int poziceY = pozice;
+            // Vybudovaní Gridu
+            for (int y = 0; y < grid; y++)
+            {
+                for (int x = 0; x < grid; x++)
+                {
+                    Point pozicePixelu = new Point(poziceX, poziceY);
+                    novyPixel(x, y, pozicePixelu);
+                    poziceX += sirkaVyska;
+                }
+                poziceX = poziceSumu;
+                poziceY += sirkaVyska;
+            }
+        }
+
+
+
+
         // Funkce pro uhlazení terénu
-        private void uhlazeniTerenu()
+        private void uhlazeniTerenu(int barva)
         {
             int x = 0;
             int y = 0;
@@ -57,76 +78,28 @@ namespace ProceduralWorldGeneration
             {
                 if(pixel.Tag == "pixel")
                 {
-                    if (pixel.BackColor != Color.FromArgb(255, 255, 255) && pixel.BackColor != Color.FromArgb(16,160,16))
+                    if (pixel.BackColor != Color.FromArgb(255, 255, 255) && pixel.BackColor != Color.FromArgb(barva,barva,barva))
                     {
-                        Console.WriteLine();
-                        Console.WriteLine(y > 0);
-                        Console.WriteLine(new String('-',22));
-                        if (x != 0 && x != 50 && y != 50 && y != 0)
+                        // Bottom Pixel
+                        if (y != grid-1 && pictureBoxPole[y + 1, x].BackColor == Color.FromArgb(255, 255, 255))
                         {
-                            if (pictureBoxPole[y + 1, x].BackColor == Color.FromArgb(255, 255, 255))
-                            {
-                                pictureBoxPole[y + 1, x].BackColor = Color.FromArgb(16, 160, 16);
-                            }
-                            if (pictureBoxPole[y - 1, x].BackColor == Color.FromArgb(255, 255, 255))
-                            {
-                                pictureBoxPole[y - 1, x].BackColor = Color.FromArgb(16, 160, 16);
-                            }
-
-                            if (pictureBoxPole[y, x+1].BackColor == Color.FromArgb(255, 255, 255))
-                            {
-                                pictureBoxPole[y, x+1].BackColor = Color.FromArgb(16, 160, 16);
-                            }
-                            if (pictureBoxPole[y, x-1].BackColor == Color.FromArgb(255, 255, 255))
-                            {
-                                pictureBoxPole[y, x-1].BackColor = Color.FromArgb(16, 160, 16);
-                            }
+                            pictureBoxPole[y + 1, x].BackColor = Color.FromArgb(barva, barva, barva);
                         }
-
-                        
-                            
-
-
-                        /*try
+                        // Top Pixel
+                        if (y != 0 && pictureBoxPole[y - 1, x].BackColor == Color.FromArgb(255, 255, 255))
                         {
-                            pictureBoxPole[y - 1, x].BackColor = Color.FromArgb(16, 16, 16);
+                            pictureBoxPole[y - 1, x].BackColor = Color.FromArgb(barva, barva, barva);
                         }
-                        catch
+                        // Right Pixel
+                        if (x != grid-1 && pictureBoxPole[y, x+1].BackColor == Color.FromArgb(255, 255, 255))
                         {
-                            return;
+                            pictureBoxPole[y, x+1].BackColor = Color.FromArgb(barva, barva, barva);
                         }
-
-                        try
-                        {    
-                            pictureBoxPole[y + 1, x].BackColor = Color.FromArgb(16, 16, 16);
-                        }
-                        catch (Exception e)
+                        // Left Pixel
+                        if (x != 0 && pictureBoxPole[y, x - 1].BackColor == Color.FromArgb(255, 255, 255))
                         {
-                            Console.WriteLine(e);
+                            pictureBoxPole[y, x - 1].BackColor = Color.FromArgb(barva, barva, barva);
                         }
-
-                        try
-                        {
-                            pictureBoxPole[y, x + 1].BackColor = Color.FromArgb(16, 16, 16);
-                        }
-                        catch (Exception e)
-                        {
-                            Console.WriteLine(e);
-                        }
-
-                        try
-                        {
-                            pictureBoxPole[y, x - 1].BackColor = Color.FromArgb(16, 16, 16);
-                        }
-                        catch (Exception e)
-                        {
-
-                        }*/
-
-
-
-
-
                     }
                     x++;
                     if(x != 0 && x % grid == 0)
@@ -134,7 +107,6 @@ namespace ProceduralWorldGeneration
                         x = 0;
                         y++;
                     }
-                    
                 }
             }
         }
@@ -154,27 +126,20 @@ namespace ProceduralWorldGeneration
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            // Vytvoøení Mapy ve Form1
+            vytvoreniGridu(grid, poziceSumu);
 
-            // Vybudovaní Gridu
-            for (int y = 0; y < grid; y++)
-            {
-                for (int x = 0; x < grid; x++)
-                {
-                    Point pozice = new Point(poziceX, poziceY);
-                    novyPixel(x, y, pozice);
-                    poziceX += 10;
-                }
-                poziceX = 100;
-                poziceY += 10;
-            }
-
-            uhlazeniTerenu();
+            // 8krat uhladit terén
+            for (int i = 2; i < 10; i++)
+                uhlazeniTerenu(i*25);
 
 
 
 
 
-            
+
+
+
         }
     }
 }
