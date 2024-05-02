@@ -10,14 +10,15 @@ namespace ProceduralWorldGeneration
         // Globální promìnné
         int grid = 50;
         int sirkaVyska = 10;
-        int poziceSumu = 100;
+        int poziceSumu = 10;
         Color barva;
         int RGB;
 
         PictureBox[,] pictureBoxPole = new PictureBox[50, 50];
+        int[,] urovenPole = new int[50, 50];
 
         // Funkce pro generaci PictureBoxù
-        private void novyPixel(int y, int x, Point location)
+        private void novyPixel(bool novy, int y, int x, Point location)
         {
             // nový PictureBox
             PictureBox pictureBox = new PictureBox();
@@ -29,15 +30,31 @@ namespace ProceduralWorldGeneration
             pictureBox.Tag = "pixel";
             pictureBox.Location = location;
 
-            // Generace nejvyšších bodù
-            int RNG = Random.Shared.Next(75); // 1.33%
+            if(novy)
+            {
+                // Generace nejvyšších bodù
+                int RNG = Random.Shared.Next(99); // 1%
 
-            if (RNG == 0)
-                RGB = 40;
+                if (RNG == 0)
+                    RGB = 40;
+                else
+                    RGB = 255;
+
+                barva = Color.FromArgb(RGB, RGB, RGB);
+                
+            }
             else
-                RGB = 255;
-
-            barva = Color.FromArgb(RGB, RGB, RGB);
+            {
+                switch (urovenPole[x, y])
+                {
+                    case 0:
+                        barva = Color.FromArgb(0, 0, 255);
+                        break;
+                    case 1:
+                        barva = Color.FromArgb(0, 255, 0);
+                        break;
+                }
+            }
             pictureBox.BackColor = barva;
 
             // Uložení hodnot do Pole
@@ -47,8 +64,9 @@ namespace ProceduralWorldGeneration
             this.Controls.Add(pictureBox);
         }
 
-        // Funkce pro vytvoøení Gridu
-        private void vytvoreniGridu(int grid, int pozice)
+
+        // Funkce pro vytvoøení  Gridu pro šum
+        private void vytvoreniGridSumu(bool novy, int grid, int pozice)
         {
             int poziceX = pozice;
             int poziceY = pozice;
@@ -58,7 +76,7 @@ namespace ProceduralWorldGeneration
                 for (int x = 0; x < grid; x++)
                 {
                     Point pozicePixelu = new Point(poziceX, poziceY);
-                    novyPixel(x, y, pozicePixelu);
+                    novyPixel(novy, x, y, pozicePixelu);
                     poziceX += sirkaVyska;
                 }
                 poziceX = poziceSumu;
@@ -67,6 +85,53 @@ namespace ProceduralWorldGeneration
         }
 
 
+        // Funkce pro zvìtšení hor
+        private void vetsiHory()
+        {
+            int sance = 3; // 25%
+            int x = 0;
+            int y = 0;
+            foreach (PictureBox pixel in Controls)
+            {
+                int RNG1 = Random.Shared.Next(sance);
+                int RNG2 = Random.Shared.Next(sance);
+                int RNG3 = Random.Shared.Next(sance);
+                int RNG4 = Random.Shared.Next(sance);
+
+                if (pixel.Tag == "pixel")
+                {
+                    if (pixel.BackColor == Color.FromArgb(40,40,40))
+                    {
+                        // Bottom Pixel
+                        if (RNG1 == 0 && y != grid - 1 && pictureBoxPole[y + 1, x].BackColor == Color.FromArgb(255, 255, 255))
+                        {
+                            pictureBoxPole[y + 1, x].BackColor = Color.FromArgb(40, 40, 40);
+                        }
+                        // Top Pixel
+                        if (RNG2 == 0 && y != 0 && pictureBoxPole[y - 1, x].BackColor == Color.FromArgb(255, 255, 255))
+                        {
+                            pictureBoxPole[y - 1, x].BackColor = Color.FromArgb(40, 40, 40);
+                        }
+                        // Right Pixel
+                        if (RNG3 == 0 && x != grid - 1 && pictureBoxPole[y, x + 1].BackColor == Color.FromArgb(255, 255, 255))
+                        {
+                            pictureBoxPole[y, x + 1].BackColor = Color.FromArgb(40, 40, 40);
+                        }
+                        // Left Pixel
+                        if (RNG4 == 0 && x != 0 && pictureBoxPole[y, x - 1].BackColor == Color.FromArgb(255, 255, 255))
+                        {
+                            pictureBoxPole[y, x - 1].BackColor = Color.FromArgb(40, 40, 40);
+                        }
+                    }
+                    x++;
+                    if (x != 0 && x % grid == 0)
+                    {
+                        x = 0;
+                        y++;
+                    }
+                }
+            }
+        }
 
 
         // Funkce pro uhlazení terénu
@@ -112,6 +177,7 @@ namespace ProceduralWorldGeneration
         }
 
 
+        // Druhá funkce pro uhlazení terénu
         private void uhlazeniTerenu2(int barva)
         {
             int x = 0;
@@ -179,6 +245,80 @@ namespace ProceduralWorldGeneration
         }
 
 
+        //Funkce pro získání úrovnì barvy
+        private void urovenBarvy()
+        {
+            int x = 0;
+            int y = 0;
+            foreach (PictureBox pixel in Controls)
+            {
+                if(pixel.Tag == "pixel")
+                {
+                    // 10
+                    if(pixel.BackColor == Color.FromArgb(40, 40, 40))
+                    {
+                        urovenPole[x, y] = 10;
+                    }
+                    // 9
+                    else if (pixel.BackColor == Color.FromArgb(50, 50, 50))
+                    {
+                        urovenPole[x, y] = 9;
+                    }
+                    // 8
+                    else if (pixel.BackColor == Color.FromArgb(75, 75, 75))
+                    {
+                        urovenPole[x, y] = 8;
+                    }
+                    // 7
+                    else if (pixel.BackColor == Color.FromArgb(100, 100, 100))
+                    {
+                        urovenPole[x, y] = 7;
+                    }
+                    // 6
+                    else if (pixel.BackColor == Color.FromArgb(125, 125, 125))
+                    {
+                        urovenPole[x, y] = 6;
+                    }
+                    // 5
+                    else if (pixel.BackColor == Color.FromArgb(150, 150, 150))
+                    {
+                        urovenPole[x, y] = 5;
+                    }
+                    // 4
+                    else if (pixel.BackColor == Color.FromArgb(175, 175, 175))
+                    {
+                        urovenPole[x, y] = 4;
+                    }
+                    // 3
+                    else if (pixel.BackColor == Color.FromArgb(200, 200, 200))
+                    {
+                        urovenPole[x, y] = 3;
+                    }
+                    // 2
+                    else if (pixel.BackColor == Color.FromArgb(225, 225, 225))
+                    {
+                        urovenPole[x, y] = 2;
+                    }
+                    // 1
+                    else if (pixel.BackColor == Color.FromArgb(250, 250, 250))
+                    {
+                        urovenPole[x, y] = 1;
+                    }
+                    // 0
+                    else if (pixel.BackColor == Color.FromArgb(255, 255, 255))
+                    {
+                        urovenPole[x, y] = 0;
+                    }
+                    x++;
+                    if (x != 0 && x % grid == 0)
+                    {
+                        x = 0;
+                        y++;
+                    }
+                }
+            }
+        }
+
 
 
 
@@ -194,27 +334,23 @@ namespace ProceduralWorldGeneration
         private void Form1_Load(object sender, EventArgs e)
         {
             // Vytvoøení Mapy ve Form1
-            vytvoreniGridu(grid, poziceSumu);
+            vytvoreniGridSumu(true,grid, poziceSumu);
+            vetsiHory();
 
             // 8krat uhladit terén
-            for (int i = 2; i < 10; i++)
+            for (int i = 2; i < 11; i++)
             {
-                if (i % 2 == 1)
-                    uhlazeniTerenu2(i * 25);
-                else
+                if (i % 2 == 0)
                     uhlazeniTerenu(i * 25);
+                else
+                    uhlazeniTerenu2(i * 25);
             }
 
+            // Získání urovnì barev
+            urovenBarvy();
 
 
-
-
-
-
-
-
-
-
+            vytvoreniGridSumu(false, grid, 600);
         }
     }
 }
