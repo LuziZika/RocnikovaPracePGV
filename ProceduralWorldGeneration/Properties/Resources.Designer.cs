@@ -59,5 +59,15 @@ namespace ProceduralWorldGeneration.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Vyhledává lokalizovaný prostředek typu System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap dirtTexture {
+            get {
+                object obj = ResourceManager.GetObject("dirtTexture", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }
