@@ -10,7 +10,7 @@ namespace ProceduralWorldGeneration
         // Globální proměnně
         int grid = 50;
         int sirkaVyska = 10;
-        int poziceSumu = 10;
+        int poziceSumu = 300;
         Color barva;
         int RGB;
 
@@ -34,7 +34,7 @@ namespace ProceduralWorldGeneration
             if (novy)
             {
                 // Generace nejvyšších bodů
-                int RNG = Random.Shared.Next(199); // 1%
+                int RNG = Random.Shared.Next(200); // 0.5%
 
                 if (RNG == 0)
                     RGB = 40;
@@ -95,11 +95,11 @@ namespace ProceduralWorldGeneration
         }
 
 
-        // Funkce pro vytvoření  Gridu pro �um
+        // Funkce pro vytvoření  Gridu pro šum
         private void vytvoreniGridu(bool novy, int grid, int pozice)
         {
             int poziceX = pozice;
-            int poziceY = 10;
+            int poziceY = 25;
             // Vybudovaní Gridu
             for (int y = 0; y < grid; y++)
             {
@@ -118,17 +118,17 @@ namespace ProceduralWorldGeneration
         // Funkce pro zvětšení hor
         private void vetsiHory()
         {
-            int sance = 2; // 33.3%
+            int sance = 2; // 50%
             int x = 0;
             int y = 0;
-            foreach (PictureBox pixel in Controls)
+            foreach (Control pixel in Controls)
             {
                 int RNG1 = Random.Shared.Next(sance);
                 int RNG2 = Random.Shared.Next(sance);
                 int RNG3 = Random.Shared.Next(sance);
                 int RNG4 = Random.Shared.Next(sance);
 
-                if (pixel.Tag == "pixel")
+                if (pixel is PictureBox && pixel.Tag == "pixel")
                 {
                     if (pixel.BackColor == Color.FromArgb(40, 40, 40))
                     {
@@ -169,9 +169,9 @@ namespace ProceduralWorldGeneration
         {
             int x = 0;
             int y = 0;
-            foreach (PictureBox pixel in Controls)
+            foreach (Control pixel in Controls)
             {
-                if (pixel.Tag == "pixel")
+                if (pixel is PictureBox && pixel.Tag == "pixel")
                 {
                     if (pixel.BackColor != Color.FromArgb(255, 255, 255) && pixel.BackColor != Color.FromArgb(barva, barva, barva))
                     {
@@ -212,9 +212,9 @@ namespace ProceduralWorldGeneration
         {
             int x = 0;
             int y = 0;
-            foreach (PictureBox pixel in Controls)
+            foreach (Control pixel in Controls)
             {
-                if (pixel.Tag == "pixel")
+                if (pixel is PictureBox && pixel.Tag == "pixel")
                 {
                     if (pixel.BackColor != Color.FromArgb(255, 255, 255) && pixel.BackColor != Color.FromArgb(barva, barva, barva))
                     {
@@ -280,9 +280,9 @@ namespace ProceduralWorldGeneration
         {
             int x = 0;
             int y = 0;
-            foreach (PictureBox pixel in Controls)
+            foreach (Control pixel in Controls)
             {
-                if (pixel.Tag == "pixel")
+                if (pixel is PictureBox && pixel.Tag == "pixel")
                 {
                     // 10
                     if (pixel.BackColor == Color.FromArgb(40, 40, 40))
@@ -368,20 +368,32 @@ namespace ProceduralWorldGeneration
             vetsiHory();
 
 
-            // 8krat uhladit terén
-            for (int i = 2; i < 11; i++)
-            {
-                if (i % 2 == 0)
-                    uhlazeniTerenu(i * 25);
-                else
-                    uhlazeniTerenu2(i * 25);
-            }
+            /* // 8krat uhladit terén
+             for (int i = 2; i < 11; i++)
+             {
+                 if (i % 2 == 0)
+                     uhlazeniTerenu(i * 25);
+                 else
+                     uhlazeniTerenu2(i * 25);
+             }*/
 
             // Získání urovní barev
             urovenBarvy();
 
             // Vytvoření světa ve Form1
-            vytvoreniGridu(false, grid, 600);
+            // vytvoreniGridu(false, grid, 600);
+        }
+        int index = 2;
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (index < 11)
+            {
+                if (index % 2 == 0)
+                    uhlazeniTerenu(index * 25);
+                else
+                    uhlazeniTerenu2(index * 25);
+                index++;
+            }
         }
     }
 }
