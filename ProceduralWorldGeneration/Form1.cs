@@ -7,7 +7,7 @@ namespace ProceduralWorldGeneration
             InitializeComponent();
         }
 
-        // Globální promìnné
+        // GlobÃ¡lnÃ­ promÄ›nnÄ›
         int grid = 50;
         int sirkaVyska = 10;
         int poziceSumu = 10;
@@ -17,10 +17,10 @@ namespace ProceduralWorldGeneration
         PictureBox[,] pictureBoxPole = new PictureBox[50, 50];
         int[,] urovenPole = new int[50, 50];
 
-        // Funkce pro generaci PictureBoxù
+        // Funkce pro generaci PictureBoxÅ¯
         private void novyPixel(bool novy, int y, int x, Point location)
         {
-            // nový PictureBox
+            // novÃ½PictureBox
             PictureBox pictureBox = new PictureBox();
 
             // Vlastnosti PictureBox
@@ -30,10 +30,10 @@ namespace ProceduralWorldGeneration
             pictureBox.Tag = "pixel";
             pictureBox.Location = location;
 
-            // Generace šedé mapy
+            // Generace Å¡ede mapy
             if (novy)
             {
-                // Generace nejvyšších bodù
+                // Generace nejvyÅ¡Å¡Ã­ch bodÅ¯
                 int RNG = Random.Shared.Next(199); // 1%
 
                 if (RNG == 0)
@@ -44,7 +44,7 @@ namespace ProceduralWorldGeneration
                 barva = Color.FromArgb(RGB, RGB, RGB);
 
             }
-            // Generace barevného svìta
+            // Generace barevnÃ©ho svÄ›ta
             else
             {
                 switch (urovenPole[y, x])
@@ -80,27 +80,27 @@ namespace ProceduralWorldGeneration
                         barva = Color.FromArgb(111, 111, 111);
                         break;
                     case 10:
-                        barva = Color.FromArgb(111, 111, 111);
+                        barva = Color.FromArgb(134, 134, 134);
                         break;
 
                 }
             }
             pictureBox.BackColor = barva;
 
-            // Uložení hodnot do Pole
+            // UloÅ¾enÃ­ hodnot do Pole
             pictureBoxPole[x, y] = pictureBox;
 
-            // Pøidání PictureBoxu do Form1
+            // PÅ™idÃ¡nÃ­ PictureBoxu do Form1
             this.Controls.Add(pictureBox);
         }
 
 
-        // Funkce pro vytvoøení  Gridu pro šum
+        // Funkce pro vytvoÅ™enÃ­  Gridu pro ï¿½um
         private void vytvoreniGridu(bool novy, int grid, int pozice)
         {
             int poziceX = pozice;
             int poziceY = 10;
-            // Vybudovaní Gridu
+            // VybudovanÃ­ Gridu
             for (int y = 0; y < grid; y++)
             {
                 for (int x = 0; x < grid; x++)
@@ -115,7 +115,7 @@ namespace ProceduralWorldGeneration
         }
 
 
-        // Funkce pro zvìtšení hor
+        // Funkce pro zvÄ›tÅ¡enÃ­ hor
         private void vetsiHory()
         {
             int sance = 2; // 33.3%
@@ -164,7 +164,7 @@ namespace ProceduralWorldGeneration
         }
 
 
-        // Funkce pro uhlazení terénu
+        // Funkce pro uhlazenÃ­ terÃ©nu
         private void uhlazeniTerenu(int barva)
         {
             int x = 0;
@@ -207,7 +207,7 @@ namespace ProceduralWorldGeneration
         }
 
 
-        // Druhá funkce pro uhlazení terénu
+        // DruhÃ¡ funkce pro uhlazenÃ­ terÃ©nu
         private void uhlazeniTerenu2(int barva)
         {
             int x = 0;
@@ -275,7 +275,7 @@ namespace ProceduralWorldGeneration
         }
 
 
-        //Funkce pro získání úrovnì barvy
+        //Funkce pro zÃ­skÃ¡nÃ­ ÃšrovnÄ› barvy
         private void urovenBarvy()
         {
             int x = 0;
@@ -363,12 +363,12 @@ namespace ProceduralWorldGeneration
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            // Vytvoøení šedé mapy ve Form1
+            // VytvoÅ™enÃ­ Å¡edÃ© mapy ve Form1
             vytvoreniGridu(true, grid, poziceSumu);
             vetsiHory();
 
 
-            // 8krat uhladit terén
+            // 8krat uhladit terÃ©n
             for (int i = 2; i < 11; i++)
             {
                 if (i % 2 == 0)
@@ -377,10 +377,10 @@ namespace ProceduralWorldGeneration
                     uhlazeniTerenu2(i * 25);
             }
 
-            // Získání urovnì barev
+            // ZÃ­skÃ¡nÃ­ urovnÃ­ barev
             urovenBarvy();
 
-            // Vytvoøení svìta ve Form1
+            // VytvoÅ™enÃ­ svÄ›ta ve Form1
             vytvoreniGridu(false, grid, 600);
         }
     }
