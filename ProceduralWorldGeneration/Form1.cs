@@ -10,7 +10,7 @@ namespace ProceduralWorldGeneration
         // Globální proměnně
         int grid = 50;
         int sirkaVyska = 10;
-        int poziceSumu = 300;
+        int poziceSumu = 10;
         Color barva;
         int RGB;
 
@@ -368,8 +368,8 @@ namespace ProceduralWorldGeneration
             vetsiHory();
 
 
-            /* // 8krat uhladit terén
-             for (int i = 2; i < 11; i++)
+             // 8krat uhladit terén
+             /*for (int i = 2; i < 11; i++)
              {
                  if (i % 2 == 0)
                      uhlazeniTerenu(i * 25);
@@ -378,13 +378,14 @@ namespace ProceduralWorldGeneration
              }*/
 
             // Získání urovní barev
-            urovenBarvy();
+            //urovenBarvy();
 
             // Vytvoření světa ve Form1
-            // vytvoreniGridu(false, grid, 600);
+            //vytvoreniGridu(false, grid, 600);
         }
+
         int index = 2;
-        private void button2_Click(object sender, EventArgs e)
+        private void casovac_Tick(object sender, EventArgs e)
         {
             if (index < 11)
             {
@@ -394,6 +395,14 @@ namespace ProceduralWorldGeneration
                     uhlazeniTerenu2(index * 25);
                 index++;
             }
+            else if (index == 11)
+            {
+                casovac.Enabled = false;
+                urovenBarvy();
+                vytvoreniGridu(false, grid, 550);
+                Console.WriteLine("test");
+            }
+                
         }
     }
 }

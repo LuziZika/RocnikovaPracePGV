@@ -28,34 +28,31 @@
         /// </summary>
         private void InitializeComponent()
         {
-            button2 = new Button();
-            SuspendLayout();
+            this.components = new System.ComponentModel.Container();
+            this.casovac = new System.Windows.Forms.Timer(this.components);
+            this.SuspendLayout();
             // 
-            // button2
+            // casovac
             // 
-            button2.Location = new Point(137, 738);
-            button2.Name = "button2";
-            button2.Size = new Size(75, 23);
-            button2.TabIndex = 0;
-            button2.Text = "button2";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;
+            this.casovac.Enabled = true;
+            this.casovac.Interval = 1000;
+            this.casovac.Tick += new System.EventHandler(this.casovac_Tick);
             // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.Silver;
-            ClientSize = new Size(1084, 761);
-            Controls.Add(button2);
-            Name = "Form1";
-            Load += Form1_Load;
-            ResumeLayout(false);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Silver;
+            this.ClientSize = new System.Drawing.Size(1084, 761);
+            this.Name = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
+            this.ResumeLayout(false);
+
         }
 
         #endregion
 
         private Button button1;
-        private Button button2;
+        private System.Windows.Forms.Timer casovac;
     }
 }
