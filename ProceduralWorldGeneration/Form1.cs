@@ -14,8 +14,8 @@ namespace ProceduralWorldGeneration
         Color barva;
         int RGB;
 
-        PictureBox[,] pictureBoxPole = new PictureBox[50, 50];
-        int[,] urovenPole = new int[50, 50];
+        PictureBox[,] pictureBoxPole = new PictureBox[100, 100];
+        int[,] urovenPole = new int[100, 100];
 
         // Funkce pro generaci PictureBoxů
         private void novyPixel(bool novy, int y, int x, Point location)
@@ -128,7 +128,7 @@ namespace ProceduralWorldGeneration
                 int RNG3 = Random.Shared.Next(sance);
                 int RNG4 = Random.Shared.Next(sance);
 
-                if (pixel is PictureBox && pixel.Tag == "pixel")
+                if (pixel is PictureBox && (string)pixel.Tag == "pixel")
                 {
                     if (pixel.BackColor == Color.FromArgb(40, 40, 40))
                     {
@@ -171,7 +171,7 @@ namespace ProceduralWorldGeneration
             int y = 0;
             foreach (Control pixel in Controls)
             {
-                if (pixel is PictureBox && pixel.Tag == "pixel")
+                if (pixel is PictureBox && (string)pixel.Tag == "pixel")
                 {
                     if (pixel.BackColor != Color.FromArgb(255, 255, 255) && pixel.BackColor != Color.FromArgb(barva, barva, barva))
                     {
@@ -195,6 +195,7 @@ namespace ProceduralWorldGeneration
                         {
                             pictureBoxPole[y, x - 1].BackColor = Color.FromArgb(barva, barva, barva);
                         }
+                        
                     }
                     x++;
                     if (x != 0 && x % grid == 0)
@@ -214,7 +215,7 @@ namespace ProceduralWorldGeneration
             int y = 0;
             foreach (Control pixel in Controls)
             {
-                if (pixel is PictureBox && pixel.Tag == "pixel")
+                if (pixel is PictureBox && (string)pixel.Tag == "pixel")
                 {
                     if (pixel.BackColor != Color.FromArgb(255, 255, 255) && pixel.BackColor != Color.FromArgb(barva, barva, barva))
                     {
@@ -263,6 +264,7 @@ namespace ProceduralWorldGeneration
                         {
                             pictureBoxPole[y, x - 1].BackColor = Color.FromArgb(barva, barva, barva);
                         }
+                        
                     }
                     x++;
                     if (x != 0 && x % grid == 0)
@@ -271,6 +273,7 @@ namespace ProceduralWorldGeneration
                         y++;
                     }
                 }
+                
             }
         }
 
@@ -282,7 +285,7 @@ namespace ProceduralWorldGeneration
             int y = 0;
             foreach (Control pixel in Controls)
             {
-                if (pixel is PictureBox && pixel.Tag == "pixel")
+                if (pixel is PictureBox && (string)pixel.Tag == "pixel")
                 {
                     // 10
                     if (pixel.BackColor == Color.FromArgb(40, 40, 40))
@@ -367,42 +370,22 @@ namespace ProceduralWorldGeneration
             vytvoreniGridu(true, grid, poziceSumu);
             vetsiHory();
 
+            // 8krat uhladit terén
+            for (int i = 2; i < 11; i++)
+            {
+                if (i % 2 == 0)
+                    uhlazeniTerenu(i * 25);
+                else
+                    uhlazeniTerenu2(i * 25);
+            }
+            
 
-             // 8krat uhladit terén
-             /*for (int i = 2; i < 11; i++)
-             {
-                 if (i % 2 == 0)
-                     uhlazeniTerenu(i * 25);
-                 else
-                     uhlazeniTerenu2(i * 25);
-             }*/
 
             // Získání urovní barev
-            //urovenBarvy();
+            urovenBarvy();
 
             // Vytvoření světa ve Form1
-            //vytvoreniGridu(false, grid, 600);
-        }
-
-        int index = 2;
-        private void casovac_Tick(object sender, EventArgs e)
-        {
-            if (index < 11)
-            {
-                if (index % 2 == 0)
-                    uhlazeniTerenu(index * 25);
-                else
-                    uhlazeniTerenu2(index * 25);
-                index++;
-            }
-            else if (index == 11)
-            {
-                casovac.Enabled = false;
-                urovenBarvy();
-                vytvoreniGridu(false, grid, 550);
-                Console.WriteLine("test");
-            }
-                
+            vytvoreniGridu(false, grid, 550);
         }
     }
 }

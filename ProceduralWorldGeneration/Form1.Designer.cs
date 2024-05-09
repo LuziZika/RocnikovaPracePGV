@@ -28,15 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.casovac = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
-            // 
-            // casovac
-            // 
-            this.casovac.Enabled = true;
-            this.casovac.Interval = 1000;
-            this.casovac.Tick += new System.EventHandler(this.casovac_Tick);
             // 
             // Form1
             // 
@@ -52,7 +44,5 @@
 
         #endregion
 
-        private Button button1;
-        private System.Windows.Forms.Timer casovac;
     }
 }
