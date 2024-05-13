@@ -14,6 +14,8 @@ namespace ProceduralWorldGenerationV2
         Color barva;
         int RGB;
 
+        Graphics g;
+
         Color[,] barvyPixeluPole = new Color[1000, 1000];
         int[,] urovenPole = new int[1000, 1000];
 
@@ -86,6 +88,7 @@ namespace ProceduralWorldGenerationV2
 
             }
             barvyPixeluPole[x, y] = barva;
+            Console.WriteLine(barva.ToString());
         }
 
 
@@ -102,6 +105,7 @@ namespace ProceduralWorldGenerationV2
                 int RNG4 = Random.Shared.Next(sance);
 
 
+                
                 Console.WriteLine("x : " + x);
                 Console.WriteLine("y : " + y);
                 if (barvyPixeluPole[y, x] == Color.FromArgb(40, 40, 40))
@@ -329,13 +333,15 @@ namespace ProceduralWorldGenerationV2
 
         private void display_Paint(object sender, PaintEventArgs e)
         {
-            Graphics g = e.Graphics;
+            g = e.Graphics;
 
             for (int y = 0; y < grid; y++)
             {
                 for (int x = 0; x < grid; x++)
                 {
                     generaceBarev(x, y);
+                    whiteNoise();
+
                 }
             }
 
@@ -359,6 +365,7 @@ namespace ProceduralWorldGenerationV2
                 for (int x = 0; x < grid; x++)
                 {
                     prepsaniBarev(x, y);
+
                 }
             }
 
@@ -379,6 +386,19 @@ namespace ProceduralWorldGenerationV2
 
 
             }
+
         }
+
+        void whiteNoise()
+        {
+            //display.Refresh();
+            int RNG = Random.Shared.Next(2);
+            if (RNG == 0)
+                g.FillRectangle(Brushes.Black, Random.Shared.Next(grid) + 100, Random.Shared.Next(grid) + 100, sirkaVyska *10, sirkaVyska * 10);
+            else
+                g.FillRectangle(Brushes.White, Random.Shared.Next(grid) + 100, Random.Shared.Next(grid) + 100, sirkaVyska * 10, sirkaVyska * 10);
+        }
+
+
     }
 }

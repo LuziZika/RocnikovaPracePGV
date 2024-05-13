@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\luzil\\Desktop\\Programs\\C#\\ProceduralWorldGenerationV2\\ProceduralWorldGenerationV2\\ProceduralWorldGenerationV2.csproj": {}
+    "C:\\Users\\luzil\\Desktop\\Programs\\C#\\RocnikovaPracePGV\\ProceduralWorldGenerationV2\\ProceduralWorldGenerationV2.csproj": {}
   },
   "projects": {
-    "C:\\Users\\luzil\\Desktop\\Programs\\C#\\ProceduralWorldGenerationV2\\ProceduralWorldGenerationV2\\ProceduralWorldGenerationV2.csproj": {
+    "C:\\Users\\luzil\\Desktop\\Programs\\C#\\RocnikovaPracePGV\\ProceduralWorldGenerationV2\\ProceduralWorldGenerationV2.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\luzil\\Desktop\\Programs\\C#\\ProceduralWorldGenerationV2\\ProceduralWorldGenerationV2\\ProceduralWorldGenerationV2.csproj",
+        "projectUniqueName": "C:\\Users\\luzil\\Desktop\\Programs\\C#\\RocnikovaPracePGV\\ProceduralWorldGenerationV2\\ProceduralWorldGenerationV2.csproj",
         "projectName": "ProceduralWorldGenerationV2",
-        "projectPath": "C:\\Users\\luzil\\Desktop\\Programs\\C#\\ProceduralWorldGenerationV2\\ProceduralWorldGenerationV2\\ProceduralWorldGenerationV2.csproj",
+        "projectPath": "C:\\Users\\luzil\\Desktop\\Programs\\C#\\RocnikovaPracePGV\\ProceduralWorldGenerationV2\\ProceduralWorldGenerationV2.csproj",
         "packagesPath": "C:\\Users\\luzil\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\luzil\\Desktop\\Programs\\C#\\ProceduralWorldGenerationV2\\ProceduralWorldGenerationV2\\obj\\",
+        "outputPath": "C:\\Users\\luzil\\Desktop\\Programs\\C#\\RocnikovaPracePGV\\ProceduralWorldGenerationV2\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\luzil\\AppData\\Roaming\\NuGet\\NuGet.Config",
