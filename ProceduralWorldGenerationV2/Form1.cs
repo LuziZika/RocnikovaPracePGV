@@ -8,16 +8,16 @@ namespace ProceduralWorldGenerationV2
         }
 
         // Globální promìnnì
-        int grid = 1000;
-        int sirkaVyska = 1;
-        int poziceSumu = 10;
+        int grid = 500;
+        int sirkaVyska = 2;
         Color barva;
         int RGB;
+        bool loading = true;
 
         Graphics g;
 
-        Color[,] barvyPixeluPole = new Color[1000, 1000];
-        int[,] urovenPole = new int[1000, 1000];
+        Color[,] barvyPixeluPole = new Color[500, 500];
+        int[,] urovenPole = new int[500, 500];
 
         // Funkce pro získání barvy
         private SolidBrush funkceBarvy(int x, int y)
@@ -105,7 +105,7 @@ namespace ProceduralWorldGenerationV2
                 int RNG4 = Random.Shared.Next(sance);
 
 
-                
+
                 Console.WriteLine("x : " + x);
                 Console.WriteLine("y : " + y);
                 if (barvyPixeluPole[y, x] == Color.FromArgb(40, 40, 40))
@@ -322,30 +322,16 @@ namespace ProceduralWorldGenerationV2
             }
         }
 
-
-
-
-
-        private void Form1_Load(object sender, EventArgs e)
+        public void Start()
         {
-
-        }
-
-        private void display_Paint(object sender, PaintEventArgs e)
-        {
-            g = e.Graphics;
-
             for (int y = 0; y < grid; y++)
             {
                 for (int x = 0; x < grid; x++)
                 {
                     generaceBarev(x, y);
-                    whiteNoise();
-
                 }
             }
 
-            vetsiHory();
             vetsiHory();
             vetsiHory();
 
@@ -359,46 +345,58 @@ namespace ProceduralWorldGenerationV2
             }
 
             urovenBarvy();
+            loading = false;
 
+            // Vybudovaní Gridu
+            int poziceX = 0;
+            int poziceY = 0;
             for (int y = 0; y < grid; y++)
             {
                 for (int x = 0; x < grid; x++)
                 {
                     prepsaniBarev(x, y);
-
-                }
-            }
-
-
-            // Vybudovaní Gridu
-            int poziceX = 100;
-            int poziceY = 25;
-            for (int y = 0; y < grid; y++)
-            {
-                for (int x = 0; x < grid; x++)
-                {
                     g.FillRectangle(funkceBarvy(x, y), poziceX, poziceY, sirkaVyska, sirkaVyska);
                     poziceX += sirkaVyska;
                 }
-                poziceX = 100;
+                poziceX = 0;
                 poziceY += sirkaVyska;
-
-
 
             }
 
         }
 
-        void whiteNoise()
+
+
+        public void whiteNoise()
         {
-            //display.Refresh();
-            int RNG = Random.Shared.Next(2);
-            if (RNG == 0)
-                g.FillRectangle(Brushes.Black, Random.Shared.Next(grid) + 100, Random.Shared.Next(grid) + 100, sirkaVyska *10, sirkaVyska * 10);
-            else
-                g.FillRectangle(Brushes.White, Random.Shared.Next(grid) + 100, Random.Shared.Next(grid) + 100, sirkaVyska * 10, sirkaVyska * 10);
+            while (loading)
+            {
+                int RNG = Random.Shared.Next(2);
+                if (RNG == 0)
+                    g.FillRectangle(Brushes.Black, Random.Shared.Next(100) * 10, Random.Shared.Next(100) * 10, 5, 5);
+                else
+                    g.FillRectangle(Brushes.LightGray, Random.Shared.Next(100) * 10, Random.Shared.Next(100) * 10, 5, 5);
+
+            }
         }
 
 
+
+
+
+     
+
+        private void display_Paint(object sender, PaintEventArgs e)
+        {
+            g = e.Graphics;
+
+            Task.Run(() =>
+            {
+                whiteNoise();
+            });
+
+            Start();
+
+        }
     }
 }

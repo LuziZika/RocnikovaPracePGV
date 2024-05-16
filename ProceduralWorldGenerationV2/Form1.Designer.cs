@@ -35,7 +35,7 @@
             // 
             display.Location = new Point(0, 0);
             display.Name = "display";
-            display.Size = new Size(1100, 800);
+            display.Size = new Size(1000, 1000);
             display.TabIndex = 0;
             display.Paint += display_Paint;
             // 
@@ -43,11 +43,14 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1184, 861);
+            ClientSize = new Size(984, 961);
             Controls.Add(display);
+            MaximizeBox = false;
+            MaximumSize = new Size(1000, 1000);
+            MinimizeBox = false;
+            MinimumSize = new Size(1000, 1000);
             Name = "Form1";
             Text = "Form1";
-            Load += Form1_Load;
             ResumeLayout(false);
         }
 
