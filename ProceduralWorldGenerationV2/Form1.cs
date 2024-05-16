@@ -7,7 +7,7 @@ namespace ProceduralWorldGenerationV2
             InitializeComponent();
         }
 
-        // Globální promìnnì
+        #region Globální promìnné
         int grid = 500;
         int sirkaVyska = 2;
         Color barva;
@@ -18,19 +18,17 @@ namespace ProceduralWorldGenerationV2
 
         Color[,] barvyPixeluPole = new Color[500, 500];
         int[,] urovenPole = new int[500, 500];
+        #endregion
 
-        // Funkce pro získání barvy
+        #region funkceBarvy() Funkce pro získání barvy
         private SolidBrush funkceBarvy(int x, int y)
         {
             SolidBrush brush = new SolidBrush(barvyPixeluPole[x, y]);
             return brush;
         }
+        #endregion
 
-
-
-
-
-        // Funkce pro generaci Barev
+        #region generaceBarev() Funkce pro generaci Barev
         private void generaceBarev(int x, int y)
         {
 
@@ -45,8 +43,9 @@ namespace ProceduralWorldGenerationV2
             barva = Color.FromArgb(RGB, RGB, RGB);
             barvyPixeluPole[x, y] = barva;
         }
+        #endregion
 
-        // Funkce pro generaci Barev
+        #region prepsaniBarev() Funkce pro generaci Barev
         private void prepsaniBarev(int x, int y)
         {
             // Generace barevného svìta
@@ -90,8 +89,9 @@ namespace ProceduralWorldGenerationV2
             barvyPixeluPole[x, y] = barva;
             Console.WriteLine(barva.ToString());
         }
+        #endregion
 
-
+        #region vetsiHory() Funkce pro zvìtšení hor
         private void vetsiHory()
         {
             int sance = 2; // 50%
@@ -139,8 +139,9 @@ namespace ProceduralWorldGenerationV2
                 }
             }
         }
+        #endregion
 
-        // Funkce pro uhlazení terénu
+        #region uhlazeniTerenu() Funkce pro uhlazení terénu
         private void uhlazeniTerenu(int barva)
         {
             int x = 0;
@@ -180,8 +181,9 @@ namespace ProceduralWorldGenerationV2
 
             }
         }
+        #endregion
 
-        // Druhá funkce pro uhlazení terénu
+        #region uhlazeniTerenu2() Druhá funkce pro uhlazení terénu
         private void uhlazeniTerenu2(int barva)
         {
             int x = 0;
@@ -247,8 +249,9 @@ namespace ProceduralWorldGenerationV2
 
             }
         }
+        #endregion
 
-        //Funkce pro získání Úrovnì barvy
+        #region urovenBarvy() Funkce pro získání Úrovnì barvy
         private void urovenBarvy()
         {
             int x = 0;
@@ -321,7 +324,9 @@ namespace ProceduralWorldGenerationV2
 
             }
         }
+        #endregion
 
+        #region Start() Funkce zahajující vytvoøení svìta
         public void Start()
         {
             for (int y = 0; y < grid; y++)
@@ -329,7 +334,6 @@ namespace ProceduralWorldGenerationV2
                 for (int x = 0; x < grid; x++)
                 {
                     generaceBarev(x, y);
-                    progressBar1.PerformStep();
                 }
             }
 
@@ -348,8 +352,6 @@ namespace ProceduralWorldGenerationV2
 
             urovenBarvy();
             loading = false;
-            this.Controls.Remove(progressBar1);
-
             
 
 
@@ -369,9 +371,9 @@ namespace ProceduralWorldGenerationV2
 
             }
         }
+        #endregion
 
-
-
+        #region whiteNoise() Funkce bílého šumu
         public void whiteNoise()
         {
             while (loading)
@@ -384,6 +386,7 @@ namespace ProceduralWorldGenerationV2
 
             }
         }
+        #endregion
 
 
 
@@ -395,12 +398,13 @@ namespace ProceduralWorldGenerationV2
         {
             g = e.Graphics;
 
-            Task.Run(() =>
+            Task.Run(() => 
             {
                 whiteNoise();
             });
 
             Start();
+
 
         }
     }
