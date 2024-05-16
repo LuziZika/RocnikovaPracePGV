@@ -29,15 +29,28 @@
         private void InitializeComponent()
         {
             display = new Panel();
+            progressBar1 = new ProgressBar();
+            display.SuspendLayout();
             SuspendLayout();
             // 
             // display
             // 
+            display.Controls.Add(progressBar1);
             display.Location = new Point(0, 0);
             display.Name = "display";
             display.Size = new Size(1000, 1000);
             display.TabIndex = 0;
             display.Paint += display_Paint;
+            // 
+            // progressBar1
+            // 
+            progressBar1.ForeColor = Color.FromArgb(124, 176, 56);
+            progressBar1.Location = new Point(100, 500);
+            progressBar1.Maximum = 250000;
+            progressBar1.Name = "progressBar1";
+            progressBar1.Size = new Size(800, 25);
+            progressBar1.Step = 1;
+            progressBar1.TabIndex = 0;
             // 
             // Form1
             // 
@@ -51,11 +64,13 @@
             MinimumSize = new Size(1000, 1000);
             Name = "Form1";
             Text = "Form1";
+            display.ResumeLayout(false);
             ResumeLayout(false);
         }
 
         #endregion
 
         private Panel display;
+        private ProgressBar progressBar1;
     }
 }

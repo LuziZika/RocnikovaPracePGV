@@ -35,7 +35,7 @@ namespace ProceduralWorldGenerationV2
         {
 
             // Generace nejvyšších bodù
-            int RNG = Random.Shared.Next(500); // 0.5%
+            int RNG = Random.Shared.Next(1000); // 0.1%
 
             if (RNG == 0)
                 RGB = 40;
@@ -74,7 +74,7 @@ namespace ProceduralWorldGenerationV2
                     barva = Color.FromArgb(124, 176, 56);
                     break;
                 case 7:
-                    barva = Color.FromArgb(77, 77, 77);
+                    barva = Color.FromArgb(124, 176, 56);
                     break;
                 case 8:
                     barva = Color.FromArgb(94, 94, 94);
@@ -329,12 +329,14 @@ namespace ProceduralWorldGenerationV2
                 for (int x = 0; x < grid; x++)
                 {
                     generaceBarev(x, y);
+                    progressBar1.PerformStep();
                 }
             }
 
             vetsiHory();
             vetsiHory();
 
+            
             // 8krat uhladit terén
             for (int i = 2; i < 11; i++)
             {
@@ -346,6 +348,10 @@ namespace ProceduralWorldGenerationV2
 
             urovenBarvy();
             loading = false;
+            this.Controls.Remove(progressBar1);
+
+            
+
 
             // Vybudovaní Gridu
             int poziceX = 0;
@@ -362,7 +368,6 @@ namespace ProceduralWorldGenerationV2
                 poziceY += sirkaVyska;
 
             }
-
         }
 
 
@@ -384,7 +389,7 @@ namespace ProceduralWorldGenerationV2
 
 
 
-     
+
 
         private void display_Paint(object sender, PaintEventArgs e)
         {
