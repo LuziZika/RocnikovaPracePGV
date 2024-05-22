@@ -13,10 +13,11 @@ namespace ProceduralWorldGenerationV2
         Color barva;
         int RGB;
         bool loading = true;
-
         Graphics g;
 
-        Color[,] barvyPixeluPole = new Color[500, 500];
+        string[,] biomePole = new string[500, 500];
+        bool[,] biomePrepsaniPole = new bool[500, 500];
+        Color[,] barvyPixeluPole = new Color[500, 000];
         int[,] urovenPole = new int[500, 500];
         #endregion
 
@@ -49,45 +50,130 @@ namespace ProceduralWorldGenerationV2
         private void prepsaniBarev(int x, int y)
         {
             // Generace barevného svìta
-            switch (urovenPole[y, x])
+            switch(biomePole[y,x])
             {
-                case 0:
-                    barva = Color.FromArgb(47, 50, 215);
-                    break;
-                case 1:
-                    barva = Color.FromArgb(64, 63, 252);
-                    break;
-                case 2:
-                    barva = Color.FromArgb(209, 197, 137);
-                    break;
-                case 3:
-                    barva = Color.FromArgb(88, 123, 39);
-                    break;
-                case 4:
-                    barva = Color.FromArgb(107, 149, 47);
-                    break;
-                case 5:
-                    barva = Color.FromArgb(128, 170, 67);
-                    break;
-                case 6:
-                    barva = Color.FromArgb(124, 176, 56);
-                    break;
-                case 7:
-                    barva = Color.FromArgb(124, 176, 56);
-                    break;
-                case 8:
-                    barva = Color.FromArgb(94, 94, 94);
-                    break;
-                case 9:
-                    barva = Color.FromArgb(111, 111, 111);
-                    break;
-                case 10:
-                    barva = Color.FromArgb(134, 134, 134);
+
+                default:
+                    switch (urovenPole[y, x])
+                    {
+                        case 0:
+                            barva = Color.FromArgb(47, 50, 215);
+                            break;
+                        case 1:
+                            barva = Color.FromArgb(64, 63, 252);
+                            break;
+                        case 2:
+                            barva = Color.FromArgb(209, 197, 137);
+                            break;
+                        case 3:
+                            barva = Color.FromArgb(88, 123, 39);
+                            break;
+                        case 4:
+                            barva = Color.FromArgb(107, 149, 47);
+                            break;
+                        case 5:
+                            barva = Color.FromArgb(128, 170, 67);
+                            break;
+                        case 6:
+                            barva = Color.FromArgb(124, 176, 56);
+                            break;
+                        case 7:
+                            barva = Color.FromArgb(124, 176, 56);
+                            break;
+                        case 8:
+                            barva = Color.FromArgb(94, 94, 94);
+                            break;
+                        case 9:
+                            barva = Color.FromArgb(111, 111, 111);
+                            break;
+                        case 10:
+                            barva = Color.FromArgb(134, 134, 134);
+                            break;
+                    }
                     break;
 
+                case "Desert":
+                    Console.WriteLine("PLSSS");
+                    switch (urovenPole[y, x])
+                    {
+                        case 0:
+                            barva = Color.FromArgb(255,0,0);
+                            break;
+                        case 1:
+                            barva = Color.FromArgb(255, 0, 0);
+                            break;
+                        case 2:
+                            barva = Color.FromArgb(255, 0, 0);
+                            break;
+                        case 3:
+                            barva = Color.FromArgb(255, 0, 0);
+                            break;
+                        case 4:
+                            barva = Color.FromArgb(255, 0, 0);
+                            break;
+                        case 5:
+                            barva = Color.FromArgb(255, 0, 0);
+                            break;
+                        case 6:
+                            barva = Color.FromArgb(255, 0, 0);
+                            break;
+                        case 7:
+                            barva = Color.FromArgb(255, 0, 0);
+                            break;
+                        case 8:
+                            barva = Color.FromArgb(255, 0, 0);
+                            break;
+                        case 9:
+                            barva = Color.FromArgb(255, 0, 0);
+                            break;
+                        case 10:
+                            barva = Color.FromArgb(255, 0, 0);
+                            break;
+                    }
+                    break;
+
+                case "Snow":
+                    Console.WriteLine("plssss");
+                    switch (urovenPole[y, x])
+                    {
+                        case 0:
+                            barva = Color.FromArgb(0,0,255);
+                            break;
+                        case 1:
+                            barva = Color.FromArgb(0, 0, 255);
+                            break;
+                        case 2:
+                            barva = Color.FromArgb(0, 0, 255);
+                            break;
+                        case 3:
+                            barva = Color.FromArgb(0, 0, 255);
+                            break;
+                        case 4:
+                            barva = Color.FromArgb(0, 0, 255);
+                            break;
+                        case 5:
+                            barva = Color.FromArgb(0, 0, 255);
+                            break;
+                        case 6:
+                            barva = Color.FromArgb(0, 0, 255);
+                            break;
+                        case 7:
+                            barva = Color.FromArgb(0, 0, 255);
+                            break;
+                        case 8:
+                            barva = Color.FromArgb(0, 0, 255);
+                            break;
+                        case 9:
+                            barva = Color.FromArgb(0, 0, 255);
+                            break;
+                        case 10:
+                            barva = Color.FromArgb(0, 0, 255);
+                            break;
+                    }
+                    break;
             }
+
             barvyPixeluPole[x, y] = barva;
-            Console.WriteLine(barva.ToString());
         }
         #endregion
 
@@ -105,9 +191,6 @@ namespace ProceduralWorldGenerationV2
                 int RNG4 = Random.Shared.Next(sance);
 
 
-
-                Console.WriteLine("x : " + x);
-                Console.WriteLine("y : " + y);
                 if (barvyPixeluPole[y, x] == Color.FromArgb(40, 40, 40))
                 {
                     // Bottom Pixel
@@ -326,6 +409,107 @@ namespace ProceduralWorldGenerationV2
         }
         #endregion
 
+        #region generaceBiome() Funkce pro generaci biomù
+        private void generaceBiome()
+        {
+            int x = 0;
+            int y = 0;
+            for (int i = 0; i < biomePole.Length; i++)
+            {
+                int RNG = Random.Shared.Next(grid*grid);
+                int RNGx = Random.Shared.Next(grid);
+                int RNGy = Random.Shared.Next(grid);
+
+                if (RNG == 0)
+                    biomePole[RNGx, RNGy] = "Desert";
+                else if (RNG == 1)
+                    biomePole[RNGx, RNGy] = "Snow";
+                else
+                    biomePole[RNGx, RNGy] = "Plain";
+
+            }
+            x++;
+            if (x != 0 && x % grid == 0)
+            {
+                x = 0;
+                y++;
+            }
+        }
+        #endregion
+
+        #region zvetseniBiomu() Funkce pro zvìtšení Biomu
+        private void zvetseniBiomu()
+        {
+            
+            {
+                
+                foreach (string biome in biomePole)
+                {
+                    //for (int i = 0; i < grid / 10; i++)
+                    {
+                        int x = 0;
+                        int y = 0;
+                        if(biome == "Desert")
+                        {
+                            Console.WriteLine("HIIIIIII");
+                                biomeHledani("Desert", x, y);
+                        }
+                                
+                        if(biome == "Snow")
+                        {
+                            Console.WriteLine("hiiiiiii");
+                                biomeHledani("Snow", x, y);
+                        }
+                        x++;
+                        if (x != 0 && x % grid == 0)
+                        {
+                            x = 0;
+                            y++;
+                        }
+                    }
+                }
+               
+            }
+
+
+            void biomeHledani(string biome, int x, int y)
+            {
+                biomePrepsaniPole[x,y] = false;
+                // Bottom tile
+                if(y != grid - 1 && biomePrepsaniPole[y + 1, x])
+                {
+                    biomePole[y + 1, x] = biome;
+                    Console.WriteLine("Bot: " + biomePole[y + 1, x]);
+                    biomePrepsaniPole[y + 1, x] = false;
+                }
+                // Top tile
+                if (y != 0 && biomePrepsaniPole[y - 1, x])
+                {
+                    biomePole[y - 1, x] = biome;
+                    Console.WriteLine("Top: " + biomePole[y - 1, x]);
+                    biomePrepsaniPole[y - 1, x] = false;
+                }
+                // Right tile
+                if (x != grid - 1 && biomePrepsaniPole[y, x + 1])
+                {
+                    biomePole[y, x + 1] = biome;
+                    Console.WriteLine("Right: " + biomePole[y, x + 1]);
+                    biomePrepsaniPole[y, x + 1] = false;
+                }
+                // Left tile
+                if (x != 0 && biomePrepsaniPole[y, x - 1])
+                {
+                    biomePole[y, x - 1] = biome;
+                    Console.WriteLine("Left: " + biomePole[y, x - 1]);
+                    biomePrepsaniPole[y, x - 1] = false;
+                }
+            }
+            
+
+
+        }
+        #endregion
+
         #region Start() Funkce zahajující vytvoøení svìta
         public void Start()
         {
@@ -334,13 +518,15 @@ namespace ProceduralWorldGenerationV2
                 for (int x = 0; x < grid; x++)
                 {
                     generaceBarev(x, y);
+                    // pøipravení pole pro biomi
+                    biomePrepsaniPole[x,y] = true;
                 }
             }
 
             vetsiHory();
             vetsiHory();
 
-            
+
             // 8krat uhladit terén
             for (int i = 2; i < 11; i++)
             {
@@ -351,8 +537,10 @@ namespace ProceduralWorldGenerationV2
             }
 
             urovenBarvy();
+            generaceBiome();
+            zvetseniBiomu();
             loading = false;
-            
+
 
 
             // Vybudovaní Gridu
@@ -398,7 +586,7 @@ namespace ProceduralWorldGenerationV2
         {
             g = e.Graphics;
 
-            Task.Run(() => 
+            Task.Run(() =>
             {
                 whiteNoise();
             });
