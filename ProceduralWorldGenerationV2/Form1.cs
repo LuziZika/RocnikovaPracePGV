@@ -9,16 +9,16 @@ namespace ProceduralWorldGenerationV2
 
         #region Globální promìnné
         int grid = 500;
-        int sirkaVyska = 2;
+        int sirkaVyska;
         Color barva;
         int RGB;
         bool loading = true;
         Graphics g;
 
-        string[,] biomePole = new string[500, 500];
-        bool[,] biomePrepsaniPole = new bool[500, 500];
-        Color[,] barvyPixeluPole = new Color[500, 000];
-        int[,] urovenPole = new int[500, 500];
+        string[,] biomePole;
+        bool[,] biomePrepsaniPole;
+        Color[,] barvyPixeluPole;
+        int[,] urovenPole;
         #endregion
 
         #region funkceBarvy() Funkce pro získání barvy
@@ -50,7 +50,7 @@ namespace ProceduralWorldGenerationV2
         private void prepsaniBarev(int x, int y)
         {
             // Generace barevného svìta
-            switch(biomePole[y,x])
+            switch (biomePole[y, x])
             {
 
                 default:
@@ -93,11 +93,10 @@ namespace ProceduralWorldGenerationV2
                     break;
 
                 case "Desert":
-                    Console.WriteLine("PLSSS");
                     switch (urovenPole[y, x])
                     {
                         case 0:
-                            barva = Color.FromArgb(255,0,0);
+                            barva = Color.FromArgb(255, 0, 0);
                             break;
                         case 1:
                             barva = Color.FromArgb(255, 0, 0);
@@ -133,11 +132,10 @@ namespace ProceduralWorldGenerationV2
                     break;
 
                 case "Snow":
-                    Console.WriteLine("plssss");
                     switch (urovenPole[y, x])
                     {
                         case 0:
-                            barva = Color.FromArgb(0,0,255);
+                            barva = Color.FromArgb(0, 0, 255);
                             break;
                         case 1:
                             barva = Color.FromArgb(0, 0, 255);
@@ -416,7 +414,7 @@ namespace ProceduralWorldGenerationV2
             int y = 0;
             for (int i = 0; i < biomePole.Length; i++)
             {
-                int RNG = Random.Shared.Next(grid*grid);
+                int RNG = Random.Shared.Next(10000);
                 int RNGx = Random.Shared.Next(grid);
                 int RNGy = Random.Shared.Next(grid);
 
@@ -442,23 +440,21 @@ namespace ProceduralWorldGenerationV2
         {
             
             {
-                
+                int x = 0;
+                int y = 0;
                 foreach (string biome in biomePole)
                 {
                     //for (int i = 0; i < grid / 10; i++)
                     {
-                        int x = 0;
-                        int y = 0;
-                        if(biome == "Desert")
+                        
+                        if (biome == "Desert")
                         {
-                            Console.WriteLine("HIIIIIII");
-                                biomeHledani("Desert", x, y);
+                            biomeHledani("Desert", x, y);
                         }
-                                
-                        if(biome == "Snow")
+
+                        if (biome == "Snow")
                         {
-                            Console.WriteLine("hiiiiiii");
-                                biomeHledani("Snow", x, y);
+                            biomeHledani("Snow", x, y);
                         }
                         x++;
                         if (x != 0 && x % grid == 0)
@@ -468,43 +464,82 @@ namespace ProceduralWorldGenerationV2
                         }
                     }
                 }
-               
+
             }
 
 
             void biomeHledani(string biome, int x, int y)
             {
-                biomePrepsaniPole[x,y] = false;
-                // Bottom tile
-                if(y != grid - 1 && biomePrepsaniPole[y + 1, x])
+                if(biomePrepsaniPole[y, x])
                 {
-                    biomePole[y + 1, x] = biome;
-                    Console.WriteLine("Bot: " + biomePole[y + 1, x]);
-                    biomePrepsaniPole[y + 1, x] = false;
-                }
-                // Top tile
-                if (y != 0 && biomePrepsaniPole[y - 1, x])
-                {
-                    biomePole[y - 1, x] = biome;
-                    Console.WriteLine("Top: " + biomePole[y - 1, x]);
-                    biomePrepsaniPole[y - 1, x] = false;
-                }
-                // Right tile
-                if (x != grid - 1 && biomePrepsaniPole[y, x + 1])
-                {
-                    biomePole[y, x + 1] = biome;
-                    Console.WriteLine("Right: " + biomePole[y, x + 1]);
-                    biomePrepsaniPole[y, x + 1] = false;
-                }
-                // Left tile
-                if (x != 0 && biomePrepsaniPole[y, x - 1])
-                {
-                    biomePole[y, x - 1] = biome;
-                    Console.WriteLine("Left: " + biomePole[y, x - 1]);
-                    biomePrepsaniPole[y, x - 1] = false;
+                    for (int i = 0; i < grid / 10; i++)
+                    {
+                        biomePrepsaniPole[x, y] = false;
+                        // Bottom tile
+                        if (y != grid - 1 && biomePrepsaniPole[y + 1, x])
+                        {
+                            biomePole[y + 1, x] = biome;
+                            biomePrepsaniPole[y + 1, x] = false;
+                        }
+                        // Top tile
+                        if (y != 0 && biomePrepsaniPole[y - 1, x])
+                        {
+                            biomePole[y - 1, x] = biome;
+                            biomePrepsaniPole[y - 1, x] = false;
+                        }
+                        // Right tile
+                        if (x != grid - 1 && biomePrepsaniPole[y, x + 1])
+
+                        {
+                            biomePole[y, x + 1] = biome;
+                            biomePrepsaniPole[y, x + 1] = false;
+                        }
+                        // Left tile
+                        if (x != 0 && biomePrepsaniPole[y, x - 1])
+                        {
+                            biomePole[y, x - 1] = biome;
+                            biomePrepsaniPole[y, x - 1] = false;
+                        }
+                    }
                 }
             }
-            
+
+            void biomeHledani2(string biome, int x, int y)
+            {
+                if (biomePrepsaniPole[y, x])
+                {
+                    for (int i = 0; i < grid / 10; i++)
+                    {
+                        biomePrepsaniPole[x, y] = false;
+                        // Bottom tile
+                        if (y != grid - 1 && biomePrepsaniPole[y + 1, x])
+                        {
+                            biomePole[y + 1, x] = biome;
+                            biomePrepsaniPole[y + 1, x] = false;
+                        }
+                        // Top tile
+                        if (y != 0 && biomePrepsaniPole[y - 1, x])
+                        {
+                            biomePole[y - 1, x] = biome;
+                            biomePrepsaniPole[y - 1, x] = false;
+                        }
+                        // Right tile
+                        if (x != grid - 1 && biomePrepsaniPole[y, x + 1])
+
+                        {
+                            biomePole[y, x + 1] = biome;
+                            biomePrepsaniPole[y, x + 1] = false;
+                        }
+                        // Left tile
+                        if (x != 0 && biomePrepsaniPole[y, x - 1])
+                        {
+                            biomePole[y, x - 1] = biome;
+                            biomePrepsaniPole[y, x - 1] = false;
+                        }
+                    }
+                }
+            }
+
 
 
         }
@@ -519,7 +554,7 @@ namespace ProceduralWorldGenerationV2
                 {
                     generaceBarev(x, y);
                     // pøipravení pole pro biomi
-                    biomePrepsaniPole[x,y] = true;
+                    biomePrepsaniPole[x, y] = true;
                 }
             }
 
@@ -581,6 +616,14 @@ namespace ProceduralWorldGenerationV2
 
 
 
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            sirkaVyska = 1000 / grid;
+            biomePole = new string[grid, grid];
+            biomePrepsaniPole = new bool[grid, grid];
+            barvyPixeluPole = new Color[grid, grid];
+            urovenPole = new int[grid, grid];
+        }
 
         private void display_Paint(object sender, PaintEventArgs e)
         {
@@ -592,7 +635,6 @@ namespace ProceduralWorldGenerationV2
             });
 
             Start();
-
 
         }
     }
