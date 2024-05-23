@@ -51,10 +51,7 @@
             MinimumSize = new Size(1000, 1000);
             Name = "Form1";
             Text = "Form1";
-<<<<<<< HEAD
             Load += Form1_Load;
-=======
->>>>>>> 2dcba00b31550f9f0b47fc6a265bfc51b77e8052
             ResumeLayout(false);
         }
 

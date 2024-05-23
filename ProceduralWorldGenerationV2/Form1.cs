@@ -15,17 +15,10 @@ namespace ProceduralWorldGenerationV2
         bool loading = true;
         Graphics g;
 
-<<<<<<< HEAD
         string[,] biomePole;
         bool[,] biomePrepsaniPole;
         Color[,] barvyPixeluPole;
         int[,] urovenPole;
-=======
-        string[,] biomePole = new string[500, 500];
-        bool[,] biomePrepsaniPole = new bool[500, 500];
-        Color[,] barvyPixeluPole = new Color[500, 000];
-        int[,] urovenPole = new int[500, 500];
->>>>>>> 2dcba00b31550f9f0b47fc6a265bfc51b77e8052
         #endregion
 
         #region funkceBarvy() Funkce pro získání barvy
@@ -57,11 +50,7 @@ namespace ProceduralWorldGenerationV2
         private void prepsaniBarev(int x, int y)
         {
             // Generace barevného svìta
-<<<<<<< HEAD
             switch (biomePole[y, x])
-=======
-            switch(biomePole[y,x])
->>>>>>> 2dcba00b31550f9f0b47fc6a265bfc51b77e8052
             {
 
                 default:
@@ -104,18 +93,10 @@ namespace ProceduralWorldGenerationV2
                     break;
 
                 case "Desert":
-<<<<<<< HEAD
                     switch (urovenPole[y, x])
                     {
                         case 0:
                             barva = Color.FromArgb(255, 0, 0);
-=======
-                    Console.WriteLine("PLSSS");
-                    switch (urovenPole[y, x])
-                    {
-                        case 0:
-                            barva = Color.FromArgb(255,0,0);
->>>>>>> 2dcba00b31550f9f0b47fc6a265bfc51b77e8052
                             break;
                         case 1:
                             barva = Color.FromArgb(255, 0, 0);
@@ -151,18 +132,10 @@ namespace ProceduralWorldGenerationV2
                     break;
 
                 case "Snow":
-<<<<<<< HEAD
                     switch (urovenPole[y, x])
                     {
                         case 0:
                             barva = Color.FromArgb(0, 0, 255);
-=======
-                    Console.WriteLine("plssss");
-                    switch (urovenPole[y, x])
-                    {
-                        case 0:
-                            barva = Color.FromArgb(0,0,255);
->>>>>>> 2dcba00b31550f9f0b47fc6a265bfc51b77e8052
                             break;
                         case 1:
                             barva = Color.FromArgb(0, 0, 255);
@@ -441,11 +414,7 @@ namespace ProceduralWorldGenerationV2
             int y = 0;
             for (int i = 0; i < biomePole.Length; i++)
             {
-<<<<<<< HEAD
                 int RNG = Random.Shared.Next(10000);
-=======
-                int RNG = Random.Shared.Next(grid*grid);
->>>>>>> 2dcba00b31550f9f0b47fc6a265bfc51b77e8052
                 int RNGx = Random.Shared.Next(grid);
                 int RNGy = Random.Shared.Next(grid);
 
@@ -471,17 +440,12 @@ namespace ProceduralWorldGenerationV2
         {
             
             {
-<<<<<<< HEAD
                 int x = 0;
                 int y = 0;
-=======
-                
->>>>>>> 2dcba00b31550f9f0b47fc6a265bfc51b77e8052
                 foreach (string biome in biomePole)
                 {
                     //for (int i = 0; i < grid / 10; i++)
                     {
-<<<<<<< HEAD
                         
                         if (biome == "Desert")
                         {
@@ -491,20 +455,6 @@ namespace ProceduralWorldGenerationV2
                         if (biome == "Snow")
                         {
                             biomeHledani("Snow", x, y);
-=======
-                        int x = 0;
-                        int y = 0;
-                        if(biome == "Desert")
-                        {
-                            Console.WriteLine("HIIIIIII");
-                                biomeHledani("Desert", x, y);
-                        }
-                                
-                        if(biome == "Snow")
-                        {
-                            Console.WriteLine("hiiiiiii");
-                                biomeHledani("Snow", x, y);
->>>>>>> 2dcba00b31550f9f0b47fc6a265bfc51b77e8052
                         }
                         x++;
                         if (x != 0 && x % grid == 0)
@@ -514,17 +464,12 @@ namespace ProceduralWorldGenerationV2
                         }
                     }
                 }
-<<<<<<< HEAD
 
-=======
-               
->>>>>>> 2dcba00b31550f9f0b47fc6a265bfc51b77e8052
             }
 
 
             void biomeHledani(string biome, int x, int y)
             {
-<<<<<<< HEAD
                 if(biomePrepsaniPole[y, x])
                 {
                     for (int i = 0; i < grid / 10; i++)
@@ -595,39 +540,6 @@ namespace ProceduralWorldGenerationV2
                 }
             }
 
-=======
-                biomePrepsaniPole[x,y] = false;
-                // Bottom tile
-                if(y != grid - 1 && biomePrepsaniPole[y + 1, x])
-                {
-                    biomePole[y + 1, x] = biome;
-                    Console.WriteLine("Bot: " + biomePole[y + 1, x]);
-                    biomePrepsaniPole[y + 1, x] = false;
-                }
-                // Top tile
-                if (y != 0 && biomePrepsaniPole[y - 1, x])
-                {
-                    biomePole[y - 1, x] = biome;
-                    Console.WriteLine("Top: " + biomePole[y - 1, x]);
-                    biomePrepsaniPole[y - 1, x] = false;
-                }
-                // Right tile
-                if (x != grid - 1 && biomePrepsaniPole[y, x + 1])
-                {
-                    biomePole[y, x + 1] = biome;
-                    Console.WriteLine("Right: " + biomePole[y, x + 1]);
-                    biomePrepsaniPole[y, x + 1] = false;
-                }
-                // Left tile
-                if (x != 0 && biomePrepsaniPole[y, x - 1])
-                {
-                    biomePole[y, x - 1] = biome;
-                    Console.WriteLine("Left: " + biomePole[y, x - 1]);
-                    biomePrepsaniPole[y, x - 1] = false;
-                }
-            }
-            
->>>>>>> 2dcba00b31550f9f0b47fc6a265bfc51b77e8052
 
 
         }
@@ -642,11 +554,7 @@ namespace ProceduralWorldGenerationV2
                 {
                     generaceBarev(x, y);
                     // pøipravení pole pro biomi
-<<<<<<< HEAD
                     biomePrepsaniPole[x, y] = true;
-=======
-                    biomePrepsaniPole[x,y] = true;
->>>>>>> 2dcba00b31550f9f0b47fc6a265bfc51b77e8052
                 }
             }
 
