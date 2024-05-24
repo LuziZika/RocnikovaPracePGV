@@ -8,7 +8,7 @@ namespace ProceduralWorldGenerationV2
         }
 
         #region Globální promìnné
-        int grid = 500;
+        int grid = 200;
         int sirkaVyska;
         Color barva;
         int RGB;
@@ -28,6 +28,21 @@ namespace ProceduralWorldGenerationV2
             return brush;
         }
         #endregion
+
+        private string funkceBiome(int x, int y)
+        {
+            switch (biomePole[y,x])
+            {
+                
+                case "Desert":
+                    return "Desert";
+                case "Snow":
+                    return "Snow";
+                default:
+                    return "Plain";
+
+            }
+        }
 
         #region generaceBarev() Funkce pro generaci Barev
         private void generaceBarev(int x, int y)
@@ -223,7 +238,7 @@ namespace ProceduralWorldGenerationV2
         #endregion
 
         #region uhlazeniTerenu() Funkce pro uhlazení terénu
-        private void uhlazeniTerenu(int barva)
+        private void uhlazeniTerenu(int barva, string biome)
         {
             int x = 0;
             int y = 0;
@@ -235,6 +250,7 @@ namespace ProceduralWorldGenerationV2
                     if (y != grid - 1 && barvyPixeluPole[y + 1, x] == Color.FromArgb(255, 255, 255))
                     {
                         barvyPixeluPole[y + 1, x] = Color.FromArgb(barva, barva, barva);
+                        biomePole[y + 1, x] = biome;
                     }
                     // Top Pixel
                     if (y != 0 && barvyPixeluPole[y - 1, x] == Color.FromArgb(255, 255, 255))
@@ -265,7 +281,7 @@ namespace ProceduralWorldGenerationV2
         #endregion
 
         #region uhlazeniTerenu2() Druhá funkce pro uhlazení terénu
-        private void uhlazeniTerenu2(int barva)
+        private void uhlazeniTerenu2(int barva, string biome)
         {
             int x = 0;
             int y = 0;
@@ -278,6 +294,7 @@ namespace ProceduralWorldGenerationV2
                     if (y != grid - 1 && barvyPixeluPole[y + 1, x] == Color.FromArgb(255, 255, 255))
                     {
                         barvyPixeluPole[y + 1, x] = Color.FromArgb(barva, barva, barva);
+                        biomePole[y + 1, x] = biome;
                     }
                     // Bottom Right
                     if (y != grid - 1 && x != grid - 1 && barvyPixeluPole[y + 1, x + 1] == Color.FromArgb(255, 255, 255))
@@ -410,27 +427,30 @@ namespace ProceduralWorldGenerationV2
         #region generaceBiome() Funkce pro generaci biomù
         private void generaceBiome()
         {
-            int x = 0;
-            int y = 0;
+            
             for (int i = 0; i < biomePole.Length; i++)
             {
                 int RNG = Random.Shared.Next(10000);
                 int RNGx = Random.Shared.Next(grid);
                 int RNGy = Random.Shared.Next(grid);
 
+                barvyPixeluPole[RNGx, RNGy] = Color.FromArgb(40, 40, 40);
+
                 if (RNG == 0)
+                {
                     biomePole[RNGx, RNGy] = "Desert";
+                    barvyPixeluPole[RNGx, RNGy] = Color.FromArgb(40, 40, 40);
+                }
+                    
                 else if (RNG == 1)
+                {
                     biomePole[RNGx, RNGy] = "Snow";
+                    barvyPixeluPole[RNGx, RNGy] = Color.FromArgb(40, 40, 40);
+                }
+                    
                 else
                     biomePole[RNGx, RNGy] = "Plain";
 
-            }
-            x++;
-            if (x != 0 && x % grid == 0)
-            {
-                x = 0;
-                y++;
             }
         }
         #endregion
@@ -470,7 +490,7 @@ namespace ProceduralWorldGenerationV2
 
             void biomeHledani(string biome, int x, int y)
             {
-                if(biomePrepsaniPole[y, x])
+                if ( biomePrepsaniPole[y, x])
                 {
                     for (int i = 0; i < grid / 10; i++)
                     {
@@ -566,14 +586,27 @@ namespace ProceduralWorldGenerationV2
             for (int i = 2; i < 11; i++)
             {
                 if (i % 2 == 0)
-                    uhlazeniTerenu(i * 25);
+                    uhlazeniTerenu(i * 25, "Plain");
                 else
-                    uhlazeniTerenu2(i * 25);
+                    uhlazeniTerenu2(i * 25, "Plain");
             }
 
             urovenBarvy();
+            Array.Clear(barvyPixeluPole);
+
             generaceBiome();
-            zvetseniBiomu();
+            
+                    for (int i = 2; i < 11; i++)
+                    {
+                        if (i % 2 == 0)
+                            uhlazeniTerenu(i * 25, funkceBiome(0,0));
+                        else
+                            uhlazeniTerenu2(i * 25, funkceBiome(1,1));
+                    }
+
+
+            
+           // zvetseniBiomu();
             loading = false;
 
 
