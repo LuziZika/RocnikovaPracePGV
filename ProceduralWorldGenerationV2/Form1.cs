@@ -8,7 +8,7 @@ namespace ProceduralWorldGenerationV2
         }
 
         #region Globální promìnné
-        int grid = 1000;
+        int grid = 500;
         int sirkaVyska;
         Color barva;
         int RGB;
@@ -52,7 +52,7 @@ namespace ProceduralWorldGenerationV2
             int RNG = Random.Shared.Next(1000); // 0.1%
 
             if (RNG == 0)
-                RGB = 40;
+                RGB = 2;
             else
                 RGB = 255;
 
@@ -111,37 +111,37 @@ namespace ProceduralWorldGenerationV2
                     switch (urovenPole[y, x])
                     {
                         case 0:
-                            barva = Color.FromArgb(255, 0, 0);
+                            barva = Color.FromArgb(47, 50, 215);
                             break;
                         case 1:
-                            barva = Color.FromArgb(255, 0, 0);
+                            barva = Color.FromArgb(64, 63, 252);
                             break;
                         case 2:
-                            barva = Color.FromArgb(255, 0, 0);
+                            barva = Color.FromArgb(158, 144, 94);
                             break;
                         case 3:
-                            barva = Color.FromArgb(255, 0, 0);
+                            barva = Color.FromArgb(200, 189, 118);
                             break;
                         case 4:
-                            barva = Color.FromArgb(255, 0, 0);
+                            barva = Color.FromArgb(200, 189, 118);
                             break;
                         case 5:
-                            barva = Color.FromArgb(255, 0, 0);
+                            barva = Color.FromArgb(200, 189, 118);
                             break;
                         case 6:
-                            barva = Color.FromArgb(255, 0, 0);
+                            barva = Color.FromArgb(239, 225, 141);
                             break;
                         case 7:
-                            barva = Color.FromArgb(255, 0, 0);
+                            barva = Color.FromArgb(239, 225, 141);
                             break;
                         case 8:
-                            barva = Color.FromArgb(255, 0, 0);
+                            barva = Color.FromArgb(239, 225, 141);
                             break;
                         case 9:
-                            barva = Color.FromArgb(255, 0, 0);
+                            barva = Color.FromArgb(239, 225, 141);
                             break;
                         case 10:
-                            barva = Color.FromArgb(255, 0, 0);
+                            barva = Color.FromArgb(239, 225, 141);
                             break;
                     }
                     break;
@@ -150,37 +150,125 @@ namespace ProceduralWorldGenerationV2
                     switch (urovenPole[y, x])
                     {
                         case 0:
-                            barva = Color.FromArgb(0, 0, 255);
+                            barva = Color.FromArgb(140, 139, 205);
                             break;
                         case 1:
-                            barva = Color.FromArgb(0, 0, 255);
+                            barva = Color.FromArgb(115, 113, 208);
                             break;
                         case 2:
-                            barva = Color.FromArgb(0, 0, 255);
+                            barva = Color.FromArgb(208, 208, 208);
                             break;
                         case 3:
-                            barva = Color.FromArgb(0, 0, 255);
+                            barva = Color.FromArgb(208, 208, 208);
                             break;
                         case 4:
-                            barva = Color.FromArgb(0, 0, 255);
+                            barva = Color.FromArgb(208, 208, 208);
                             break;
                         case 5:
-                            barva = Color.FromArgb(0, 0, 255);
+                            barva = Color.FromArgb(208, 208, 208);
                             break;
                         case 6:
-                            barva = Color.FromArgb(0, 0, 255);
+                            barva = Color.FromArgb(163, 163, 163);
                             break;
                         case 7:
-                            barva = Color.FromArgb(0, 0, 255);
+                            barva = Color.FromArgb(163, 163, 163);
                             break;
                         case 8:
-                            barva = Color.FromArgb(0, 0, 255);
+                            barva = Color.FromArgb(250, 250, 250);
                             break;
                         case 9:
-                            barva = Color.FromArgb(0, 0, 255);
+                            barva = Color.FromArgb(250, 250, 250);
                             break;
                         case 10:
-                            barva = Color.FromArgb(0, 0, 255);
+                            barva = Color.FromArgb(250, 250, 250);
+                            break;
+                    }
+                    break;
+                case "Jungle":
+                    switch (urovenPole[y, x])
+                    {
+                        case 0:
+                            barva = Color.FromArgb(47, 50, 215);
+                            break;
+                        case 1:
+                            barva = Color.FromArgb(64, 63, 252);
+                            break;
+                        case 2:
+                            barva = Color.FromArgb(209, 197, 137);
+                            break;
+                        case 3:
+                            barva = Color.FromArgb(89, 166, 39);
+                            break;
+                        case 4:
+                            barva = Color.FromArgb(53, 137, 32);
+                            break;
+                        case 5:
+                            if (Random.Shared.Next(2) == 0)
+                                barva = Color.FromArgb(53, 137, 32);
+                            else barva = Color.FromArgb(18, 62, 6);
+                            break;
+                        case 6:
+                            if (Random.Shared.Next(2) == 0)
+                                barva = Color.FromArgb(53, 137, 32);
+                            else barva = Color.FromArgb(18, 62, 6);
+                            break;
+                        case 7:
+                            if (Random.Shared.Next(2) == 0)
+                                barva = Color.FromArgb(53, 137, 32);
+                            else barva = Color.FromArgb(18, 62, 6);
+                            break;
+                        case 8:
+                            if (Random.Shared.Next(2) == 0)
+                                barva = Color.FromArgb(53, 137, 32);
+                            else barva = Color.FromArgb(18, 62, 6);
+                            break;
+                        case 9:
+                            if (Random.Shared.Next(2) == 0)
+                                barva = Color.FromArgb(53, 137, 32);
+                            else barva = Color.FromArgb(18, 62, 6);
+                            break;
+                        case 10:
+                            if (Random.Shared.Next(2) == 0)
+                                barva = Color.FromArgb(53, 137, 32);
+                            else barva = Color.FromArgb(18, 62, 6);
+                            break;
+                    }
+                    break;
+                case "Badlands":
+                    switch (urovenPole[y, x])
+                    {
+                        case 0:
+                            barva = Color.FromArgb(47, 50, 215);
+                            break;
+                        case 1:
+                            barva = Color.FromArgb(64, 63, 252);
+                            break;
+                        case 2:
+                            barva = Color.FromArgb(198, 103, 42);
+                            break;
+                        case 3:
+                            barva = Color.FromArgb(198, 103, 42);
+                            break;
+                        case 4:
+                            barva = Color.FromArgb(164, 87, 33);
+                            break;
+                        case 5:
+                            barva = Color.FromArgb(164, 87, 33);
+                            break;
+                        case 6:
+                            barva = Color.FromArgb(146, 81, 30);
+                            break;
+                        case 7:
+                            barva = Color.FromArgb(131, 70, 27);
+                            break;
+                        case 8:
+                            barva = Color.FromArgb(129, 69, 24);
+                            break;
+                        case 9:
+                            barva = Color.FromArgb(129, 69, 24);
+                            break;
+                        case 10:
+                            barva = Color.FromArgb(97, 48, 21);
                             break;
                     }
                     break;
@@ -204,27 +292,27 @@ namespace ProceduralWorldGenerationV2
                 int RNG4 = Random.Shared.Next(sance);
 
 
-                if (barvyPixeluPole[y, x] == Color.FromArgb(40, 40, 40))
+                if (barvyPixeluPole[y, x] == Color.FromArgb(2, 2, 2))
                 {
                     // Bottom Pixel
                     if (RNG1 == 0 && y != grid - 1 && barvyPixeluPole[y + 1, x] == Color.FromArgb(255, 255, 255))
                     {
-                        barvyPixeluPole[y + 1, x] = Color.FromArgb(40, 40, 40);
+                        barvyPixeluPole[y + 1, x] = Color.FromArgb(2, 2, 2);
                     }
                     // Top Pixel
                     if (RNG2 == 0 && y != 0 && barvyPixeluPole[y - 1, x] == Color.FromArgb(255, 255, 255))
                     {
-                        barvyPixeluPole[y - 1, x] = Color.FromArgb(40, 40, 40);
+                        barvyPixeluPole[y - 1, x] = Color.FromArgb(2, 2, 2);
                     }
                     // Right Pixel
                     if (RNG3 == 0 && x != grid - 1 && barvyPixeluPole[y, x + 1] == Color.FromArgb(255, 255, 255))
                     {
-                        barvyPixeluPole[y, x + 1] = Color.FromArgb(40, 40, 40);
+                        barvyPixeluPole[y, x + 1] = Color.FromArgb(2, 2, 2);
                     }
                     // Left Pixel
                     if (RNG4 == 0 && x != 0 && barvyPixeluPole[y, x - 1] == Color.FromArgb(255, 255, 255))
                     {
-                        barvyPixeluPole[y, x - 1] = Color.FromArgb(40, 40, 40);
+                        barvyPixeluPole[y, x - 1] = Color.FromArgb(2, 2, 2);
                     }
                 }
                 x++;
@@ -365,52 +453,52 @@ namespace ProceduralWorldGenerationV2
 
 
                 // 10
-                if (pixel == Color.FromArgb(40, 40, 40))
+                if (pixel == Color.FromArgb(2, 2, 2))
                 {
                     urovenPole[x, y] = 10;
                 }
                 // 9
-                else if (pixel == Color.FromArgb(50, 50, 50))
+                else if (pixel == Color.FromArgb(4, 4, 4))
                 {
                     urovenPole[x, y] = 9;
                 }
                 // 8
-                else if (pixel == Color.FromArgb(75, 75, 75))
+                else if (pixel == Color.FromArgb(6, 6, 6))
                 {
                     urovenPole[x, y] = 8;
                 }
                 // 7
-                else if (pixel == Color.FromArgb(100, 100, 100))
+                else if (pixel == Color.FromArgb(8, 8, 8))
                 {
                     urovenPole[x, y] = 7;
                 }
                 // 6
-                else if (pixel == Color.FromArgb(125, 125, 125))
+                else if (pixel == Color.FromArgb(10, 10, 10))
                 {
                     urovenPole[x, y] = 6;
                 }
                 // 5
-                else if (pixel == Color.FromArgb(150, 150, 150))
+                else if (pixel == Color.FromArgb(12, 12, 12))
                 {
                     urovenPole[x, y] = 5;
                 }
                 // 4
-                else if (pixel == Color.FromArgb(175, 175, 175))
+                else if (pixel == Color.FromArgb(14, 14, 14))
                 {
                     urovenPole[x, y] = 4;
                 }
                 // 3
-                else if (pixel == Color.FromArgb(200, 200, 200))
+                else if (pixel == Color.FromArgb(16, 16, 16))
                 {
                     urovenPole[x, y] = 3;
                 }
                 // 2
-                else if (pixel == Color.FromArgb(225, 225, 225))
+                else if (pixel == Color.FromArgb(18, 18, 18))
                 {
                     urovenPole[x, y] = 2;
                 }
                 // 1
-                else if (pixel == Color.FromArgb(250, 250, 250))
+                else if (pixel == Color.FromArgb(20, 20, 20))
                 {
                     urovenPole[x, y] = 1;
                 }
@@ -436,22 +524,51 @@ namespace ProceduralWorldGenerationV2
             
             //for (int i = 0; i < biomePole.Length; i++)
             {
-                int RNG = Random.Shared.Next(50000);
+                int RNG = Random.Shared.Next(100000);
 
                 barvyPixeluPole[x, y] = Color.FromArgb(1, 1, 1);
+                if(RNG == 0 && RNG == 1 && RNG == 2 &&  RNG == 3 && RNG == 4 && RNG == 5)
+                {
+                    biomePole[x, y] = "Plain";
+                    barvyPixeluPole[x, y] = Color.FromArgb(255, 255, 255);
+                }
 
-                if (RNG == 0)
+                else if (RNG == 6)
                 {
                     biomePole[x, y] = "Desert";
                     barvyPixeluPole[x, y] = Color.FromArgb(1, 1, 1);
                 }
-                    
-                else if (RNG == 1)
+
+                else if (RNG == 7)
+                {
+                    biomePole[x, y] = "Desert";
+                    barvyPixeluPole[x, y] = Color.FromArgb(1, 1, 1);
+                }
+
+                else if (RNG == 8)
                 {
                     biomePole[x, y] = "Snow";
                     barvyPixeluPole[x, y] = Color.FromArgb(1, 1, 1);
                 }
-                    
+
+                else if (RNG == 9)
+                {
+                    biomePole[x, y] = "Jungle";
+                    barvyPixeluPole[x, y] = Color.FromArgb(1, 1, 1);
+                }
+
+                else if (RNG == 10)
+                {
+                    biomePole[x, y] = "Jungle";
+                    barvyPixeluPole[x, y] = Color.FromArgb(1, 1, 1);
+                }
+
+                else if (RNG == 11)
+                {
+                    biomePole[x, y] = "Badlands";
+                    barvyPixeluPole[x, y] = Color.FromArgb(1, 1, 1);
+                }
+
                 else
                 {
                     biomePole[x, y] = "Plain";
@@ -576,7 +693,7 @@ namespace ProceduralWorldGenerationV2
         #region Start() Funkce zahajující vytvoøení svìta
         public void Start()
         {
-           /* for (int y = 0; y < grid; y++)
+            for (int y = 0; y < grid; y++)
             {
                 for (int x = 0; x < grid; x++)
                 {
@@ -594,11 +711,11 @@ namespace ProceduralWorldGenerationV2
             for (int i = 2; i < 11; i++)
             {
                 if (i % 2 == 0)
-                    uhlazeniTerenu(i * 25);
+                    uhlazeniTerenu(i * 2);
                 else
-                    uhlazeniTerenu2(i * 25);
+                    uhlazeniTerenu2(i * 2);
             }
-            urovenBarvy();*/
+            urovenBarvy();
 
             Array.Clear(barvyPixeluPole);
             for (int y = 0; y < grid; y++)
@@ -609,14 +726,14 @@ namespace ProceduralWorldGenerationV2
                     biomePrepsaniPole[x, y] = true;
                 }
             }
-                    for (int i = 2; i < grid/10; i++)
+            int RNG = Random.Shared.Next(20, grid / 10);
+                    for (int i = 2; i < RNG; i++)
                     {
                         if (i % 2 == 0)
                             uhlazeniTerenu(i * 2);
                         else
                             uhlazeniTerenu2(i * 2);
                     }
-            urovenBarvy();
 
 
 
