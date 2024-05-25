@@ -8,7 +8,7 @@ namespace ProceduralWorldGenerationV2
         }
 
         #region Globální promìnné
-        int grid = 500;
+        int grid = 1000;
         int sirkaVyska;
         Color barva;
         int RGB;
@@ -150,7 +150,7 @@ namespace ProceduralWorldGenerationV2
                     switch (urovenPole[y, x])
                     {
                         case 0:
-                            barva = Color.FromArgb(140, 139, 205);
+                            barva = Color.FromArgb(47, 50, 215);
                             break;
                         case 1:
                             barva = Color.FromArgb(115, 113, 208);
@@ -710,7 +710,7 @@ namespace ProceduralWorldGenerationV2
             // 8krat uhladit terén
             for (int i = 2; i < 11; i++)
             {
-                if (i % 2 == 0)
+                if (Random.Shared.Next(2) == 0)
                     uhlazeniTerenu(i * 2);
                 else
                     uhlazeniTerenu2(i * 2);
@@ -726,10 +726,9 @@ namespace ProceduralWorldGenerationV2
                     biomePrepsaniPole[x, y] = true;
                 }
             }
-            int RNG = Random.Shared.Next(20, grid / 10);
-                    for (int i = 2; i < RNG; i++)
+                    for (int i = 2; i < grid / 10; i++)
                     {
-                        if (i % 2 == 0)
+                        if (Random.Shared.Next(2) == 0)
                             uhlazeniTerenu(i * 2);
                         else
                             uhlazeniTerenu2(i * 2);
