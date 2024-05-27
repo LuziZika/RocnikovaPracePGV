@@ -29,21 +29,6 @@ namespace ProceduralWorldGenerationV2
         }
         #endregion
 
-        private string funkceBiome(int x, int y)
-        {
-            switch (biomePole[y,x])
-            {
-                
-                case "Desert":
-                    return "Desert";
-                case "Snow":
-                    return "Snow";
-                default:
-                    return "Plain";
-
-            }
-        }
-
         #region generaceBarev() Funkce pro generaci Barev
         private void generaceBarev(int x, int y)
         {
@@ -81,28 +66,118 @@ namespace ProceduralWorldGenerationV2
                             barva = Color.FromArgb(209, 197, 137);
                             break;
                         case 3:
-                            barva = Color.FromArgb(88, 123, 39);
+                            barva = Color.FromArgb(104, 160, 37);
                             break;
                         case 4:
-                            barva = Color.FromArgb(107, 149, 47);
+                            barva = Color.FromArgb(69, 104, 28);
                             break;
                         case 5:
-                            barva = Color.FromArgb(128, 170, 67);
+                            barva = Color.FromArgb(83, 125, 33);
                             break;
                         case 6:
-                            barva = Color.FromArgb(124, 176, 56);
+                            if (Random.Shared.Next(10) == 0)
+                                barva = Color.FromArgb(109, 166, 42);
+                            else barva = Color.FromArgb(90, 136, 36);
                             break;
                         case 7:
-                            barva = Color.FromArgb(124, 176, 56);
+                            if (Random.Shared.Next(10) == 0)
+                                barva = Color.FromArgb(109, 166, 42);
+                            else barva = Color.FromArgb(90, 136, 36);
                             break;
                         case 8:
-                            barva = Color.FromArgb(94, 94, 94);
+                            if (Random.Shared.Next(10) == 0)
+                                barva = Color.FromArgb(109, 166, 42);
+                            else barva = Color.FromArgb(90, 136, 36);
                             break;
                         case 9:
-                            barva = Color.FromArgb(111, 111, 111);
+                            barva = Color.FromArgb(98, 150, 38);
                             break;
                         case 10:
+                            barva = Color.FromArgb(109, 166, 42);
+                            break;
+                    }
+                    break;
+
+                case "Plain2":
+                        switch (urovenPole[y, x])
+                    {
+                        case 0:
+                            barva = Color.FromArgb(47, 50, 215);
+                            break;
+                        case 1:
+                            barva = Color.FromArgb(64, 63, 252);
+                            break;
+                        case 2:
+                            barva = Color.FromArgb(209, 197, 137);
+                            break;
+                        case 3:
+                            barva = Color.FromArgb(104, 160, 37);
+                            break;
+                        case 4:
+                            barva = Color.FromArgb(69, 104, 28);
+                            break;
+                        case 5:
+                            barva = Color.FromArgb(83, 125, 33);
+                            break;
+                        case 6:
+                            if (Random.Shared.Next(10) == 0)
+                                barva = Color.FromArgb(109, 166, 42);
+                            else barva = Color.FromArgb(90, 136, 36);
+                            break;
+                        case 7:
+                            if (Random.Shared.Next(10) == 0)
+                                barva = Color.FromArgb(109, 166, 42);
+                            else barva = Color.FromArgb(90, 136, 36);
+                            break;
+                        case 8:
+                            if (Random.Shared.Next(10) == 0)
+                                barva = Color.FromArgb(109, 166, 42);
+                            else barva = Color.FromArgb(90, 136, 36);
+                            break;
+                        case 9:
+                            barva = Color.FromArgb(98, 150, 38);
+                            break;
+                        case 10:
+                            barva = Color.FromArgb(109, 166, 42);
+                            break;
+                    }
+                    break;
+
+                case "Mountain":
+                    switch (urovenPole[y, x])
+                    {
+                        case 0:
+                            barva = Color.FromArgb(47, 50, 215);
+                            break;
+                        case 1:
+                            barva = Color.FromArgb(64, 63, 252);
+                            break;
+                        case 2:
+                            barva = Color.FromArgb(209, 197, 137);
+                            break;
+                        case 3:
+                            barva = Color.FromArgb(104, 160, 37);
+                            break;
+                        case 4:
+                            barva = Color.FromArgb(94, 94, 94);
+                            break;
+                        case 5:
+                            barva = Color.FromArgb(94, 94, 94);
+                            break;
+                        case 6:
+                            barva = Color.FromArgb(111, 111, 111);
+                            break;
+                        case 7:
+                            barva = Color.FromArgb(111, 111, 111);
+                            break;
+                        case 8:
                             barva = Color.FromArgb(134, 134, 134);
+                            break;
+                        case 9:
+                            barva = Color.FromArgb(134, 134, 134);
+                            break;
+                        case 10:
+                            barva = Color.FromArgb(150, 150, 150);
                             break;
                     }
                     break;
@@ -117,28 +192,36 @@ namespace ProceduralWorldGenerationV2
                             barva = Color.FromArgb(64, 63, 252);
                             break;
                         case 2:
-                            barva = Color.FromArgb(158, 144, 94);
+                            barva = Color.FromArgb(239, 225, 141);
                             break;
                         case 3:
-                            barva = Color.FromArgb(200, 189, 118);
+                            barva = Color.FromArgb(239, 225, 141);
                             break;
                         case 4:
-                            barva = Color.FromArgb(200, 189, 118);
+                            barva = Color.FromArgb(221, 209, 145);
                             break;
                         case 5:
-                            barva = Color.FromArgb(200, 189, 118);
+                            barva = Color.FromArgb(221, 209, 145);
                             break;
                         case 6:
-                            barva = Color.FromArgb(239, 225, 141);
+                            if (Random.Shared.Next(5) != 0)
+                                barva = Color.FromArgb(221, 209, 145);
+                            else barva = Color.FromArgb(239, 225, 141);
                             break;
                         case 7:
-                            barva = Color.FromArgb(239, 225, 141);
+                            if (Random.Shared.Next(5) != 0)
+                                barva = Color.FromArgb(221, 209, 145);
+                            else barva = Color.FromArgb(239, 225, 141);
                             break;
                         case 8:
-                            barva = Color.FromArgb(239, 225, 141);
+                            if (Random.Shared.Next(5) != 0)
+                                barva = Color.FromArgb(221, 209, 145);
+                            else barva = Color.FromArgb(239, 225, 141);
                             break;
                         case 9:
-                            barva = Color.FromArgb(239, 225, 141);
+                            if (Random.Shared.Next(5) != 0)
+                                barva = Color.FromArgb(221, 209, 145);
+                            else barva = Color.FromArgb(239, 225, 141);
                             break;
                         case 10:
                             barva = Color.FromArgb(239, 225, 141);
@@ -153,31 +236,31 @@ namespace ProceduralWorldGenerationV2
                             barva = Color.FromArgb(47, 50, 215);
                             break;
                         case 1:
-                            barva = Color.FromArgb(115, 113, 208);
+                            barva = Color.FromArgb(140, 139, 205);
                             break;
                         case 2:
-                            barva = Color.FromArgb(208, 208, 208);
+                            barva = Color.FromArgb(140, 139, 205);
                             break;
                         case 3:
-                            barva = Color.FromArgb(208, 208, 208);
+                            barva = Color.FromArgb(140, 139, 205);
                             break;
                         case 4:
-                            barva = Color.FromArgb(208, 208, 208);
+                            barva = Color.FromArgb(94, 94, 94);
                             break;
                         case 5:
-                            barva = Color.FromArgb(208, 208, 208);
+                            barva = Color.FromArgb(94, 94, 94);
                             break;
                         case 6:
-                            barva = Color.FromArgb(163, 163, 163);
+                            barva = Color.FromArgb(111, 111, 111);
                             break;
                         case 7:
-                            barva = Color.FromArgb(163, 163, 163);
+                            barva = Color.FromArgb(111, 111, 111);
                             break;
                         case 8:
-                            barva = Color.FromArgb(250, 250, 250);
+                            barva = Color.FromArgb(134, 134, 134);
                             break;
                         case 9:
-                            barva = Color.FromArgb(250, 250, 250);
+                            barva = Color.FromArgb(134, 134, 134);
                             break;
                         case 10:
                             barva = Color.FromArgb(250, 250, 250);
@@ -197,40 +280,40 @@ namespace ProceduralWorldGenerationV2
                             barva = Color.FromArgb(209, 197, 137);
                             break;
                         case 3:
-                            barva = Color.FromArgb(89, 166, 39);
+                            barva = Color.FromArgb(104, 160, 37);
                             break;
                         case 4:
-                            barva = Color.FromArgb(53, 137, 32);
+                            barva = Color.FromArgb(69, 104, 28);
                             break;
                         case 5:
-                            if (Random.Shared.Next(2) == 0)
-                                barva = Color.FromArgb(53, 137, 32);
-                            else barva = Color.FromArgb(18, 62, 6);
+                            if (Random.Shared.Next(2) != 0)
+                                barva = Color.FromArgb(83, 125, 33);
+                            else barva = Color.FromArgb(33, 88, 19);
                             break;
                         case 6:
-                            if (Random.Shared.Next(2) == 0)
-                                barva = Color.FromArgb(53, 137, 32);
-                            else barva = Color.FromArgb(18, 62, 6);
+                            if (Random.Shared.Next(2) != 0)
+                                barva = Color.FromArgb(90, 136, 36);
+                            else barva = Color.FromArgb(33, 88, 19);
                             break;
                         case 7:
-                            if (Random.Shared.Next(2) == 0)
-                                barva = Color.FromArgb(53, 137, 32);
-                            else barva = Color.FromArgb(18, 62, 6);
+                            if (Random.Shared.Next(2) != 0)
+                                barva = Color.FromArgb(90, 136, 36);
+                            else barva = Color.FromArgb(33, 88, 19);
                             break;
                         case 8:
-                            if (Random.Shared.Next(2) == 0)
-                                barva = Color.FromArgb(53, 137, 32);
-                            else barva = Color.FromArgb(18, 62, 6);
+                            if (Random.Shared.Next(2) != 0)
+                                barva = Color.FromArgb(90, 136, 36);
+                            else barva = Color.FromArgb(33, 88, 19);
                             break;
                         case 9:
-                            if (Random.Shared.Next(2) == 0)
-                                barva = Color.FromArgb(53, 137, 32);
-                            else barva = Color.FromArgb(18, 62, 6);
+                            if (Random.Shared.Next(2) != 0)
+                                barva = Color.FromArgb(98, 150, 38);
+                            else barva = Color.FromArgb(33, 88, 19);
                             break;
                         case 10:
-                            if (Random.Shared.Next(2) == 0)
-                                barva = Color.FromArgb(53, 137, 32);
-                            else barva = Color.FromArgb(18, 62, 6);
+                            if (Random.Shared.Next(2) != 0)
+                                barva = Color.FromArgb(109, 166, 42);
+                            else barva = Color.FromArgb(33, 88, 19);
                             break;
                     }
                     break;
@@ -262,13 +345,13 @@ namespace ProceduralWorldGenerationV2
                             barva = Color.FromArgb(131, 70, 27);
                             break;
                         case 8:
-                            barva = Color.FromArgb(129, 69, 24);
+                            barva = Color.FromArgb(158, 84, 31);
                             break;
                         case 9:
-                            barva = Color.FromArgb(129, 69, 24);
+                            barva = Color.FromArgb(167, 88, 33);
                             break;
                         case 10:
-                            barva = Color.FromArgb(97, 48, 21);
+                            barva = Color.FromArgb(201, 106, 38);
                             break;
                     }
                     break;
@@ -524,46 +607,40 @@ namespace ProceduralWorldGenerationV2
             
             //for (int i = 0; i < biomePole.Length; i++)
             {
-                int RNG = Random.Shared.Next(100000);
 
                 barvyPixeluPole[x, y] = Color.FromArgb(1, 1, 1);
-                if(RNG == 0 && RNG == 1 && RNG == 2 &&  RNG == 3 && RNG == 4 && RNG == 5)
+                if(Random.Shared.Next(25000) == 0)
                 {
-                    biomePole[x, y] = "Plain";
-                    barvyPixeluPole[x, y] = Color.FromArgb(255, 255, 255);
+                    biomePole[x, y] = "Plain2";
+                    barvyPixeluPole[x, y] = Color.FromArgb(1, 1, 1);
                 }
 
-                else if (RNG == 6)
+                else if (Random.Shared.Next(50000) == 0)
                 {
                     biomePole[x, y] = "Desert";
                     barvyPixeluPole[x, y] = Color.FromArgb(1, 1, 1);
                 }
 
-                else if (RNG == 7)
-                {
-                    biomePole[x, y] = "Desert";
-                    barvyPixeluPole[x, y] = Color.FromArgb(1, 1, 1);
-                }
-
-                else if (RNG == 8)
+                 else if (Random.Shared.Next(100000) == 0)
                 {
                     biomePole[x, y] = "Snow";
                     barvyPixeluPole[x, y] = Color.FromArgb(1, 1, 1);
                 }
 
-                else if (RNG == 9)
+                else if (Random.Shared.Next(50000) == 0)
                 {
                     biomePole[x, y] = "Jungle";
                     barvyPixeluPole[x, y] = Color.FromArgb(1, 1, 1);
                 }
 
-                else if (RNG == 10)
+                else if (Random.Shared.Next(50000) == 0)
                 {
-                    biomePole[x, y] = "Jungle";
+                    biomePole[x, y] = "Mountain";
+                    Console.WriteLine("hiiiii");
                     barvyPixeluPole[x, y] = Color.FromArgb(1, 1, 1);
                 }
 
-                else if (RNG == 11)
+                else if (Random.Shared.Next(500000) == 0)
                 {
                     biomePole[x, y] = "Badlands";
                     barvyPixeluPole[x, y] = Color.FromArgb(1, 1, 1);
@@ -574,7 +651,9 @@ namespace ProceduralWorldGenerationV2
                     biomePole[x, y] = "Plain";
                     barvyPixeluPole[x, y] = Color.FromArgb(255,255, 255);
                 }
-                    
+
+                
+
 
             }
         }
@@ -705,12 +784,17 @@ namespace ProceduralWorldGenerationV2
 
             vetsiHory();
             vetsiHory();
+            vetsiHory();
+            vetsiHory();
+            vetsiHory();
+
+
 
 
             // 8krat uhladit terén
             for (int i = 2; i < 11; i++)
             {
-                if (Random.Shared.Next(2) == 0)
+                if (i%2 == 0)
                     uhlazeniTerenu(i * 2);
                 else
                     uhlazeniTerenu2(i * 2);
@@ -726,17 +810,14 @@ namespace ProceduralWorldGenerationV2
                     biomePrepsaniPole[x, y] = true;
                 }
             }
-                    for (int i = 2; i < grid / 10; i++)
-                    {
-                        if (Random.Shared.Next(2) == 0)
-                            uhlazeniTerenu(i * 2);
-                        else
-                            uhlazeniTerenu2(i * 2);
-                    }
+            for (int i = 2; i < grid / 15; i++)
+            {
+                if (i % 2 == 0)
+                    uhlazeniTerenu(i * 2);
+                else
+                    uhlazeniTerenu2(i * 2);
+            }
 
-
-
-            // zvetseniBiomu();
             loading = false;
 
 
