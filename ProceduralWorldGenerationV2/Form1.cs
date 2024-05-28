@@ -794,7 +794,7 @@ namespace ProceduralWorldGenerationV2
             // 8krat uhladit terén
             for (int i = 2; i < 11; i++)
             {
-                if (i%2 == 0)
+                if (Random.Shared.Next(2) == 0)
                     uhlazeniTerenu(i * 2);
                 else
                     uhlazeniTerenu2(i * 2);
@@ -812,7 +812,7 @@ namespace ProceduralWorldGenerationV2
             }
             for (int i = 2; i < grid / 15; i++)
             {
-                if (i % 2 == 0)
+                if (Random.Shared.Next(2) == 0)
                     uhlazeniTerenu(i * 2);
                 else
                     uhlazeniTerenu2(i * 2);
