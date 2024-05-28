@@ -34,6 +34,7 @@
             // display
             // 
             display.Location = new Point(0, 0);
+            display.Margin = new Padding(0);
             display.Name = "display";
             display.Size = new Size(1000, 1000);
             display.TabIndex = 0;
