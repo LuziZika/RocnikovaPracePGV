@@ -94,8 +94,6 @@ namespace ProceduralWorldGenerationV2
                             break;
                         case 10:
                             barva = Color.FromArgb(109, 166, 42);
-                            //if (Random.Shared.Next(10) == 0)
-                                //Strom();
                             break;
                     }
                     break;
@@ -520,7 +518,6 @@ namespace ProceduralWorldGenerationV2
                         barvyPixeluPole[y, x - 1] = Color.FromArgb(barva, barva, barva);
                         biomePole[y, x - 1] = biome;
                     }
-
                 }
                 x++;
                 if (x != 0 && x % grid == 0)
@@ -608,11 +605,11 @@ namespace ProceduralWorldGenerationV2
                 {
                     urovenPole[x, y] = 1;
                 }
-                else if (pixel == Color.FromArgb(30,30,30))
+                else if (pixel == Color.FromArgb(30, 30, 30))
                 {
                     urovenPole[x, y] = 1;
                 }
-                else if (pixel == Color.FromArgb(32,32,32))
+                else if (pixel == Color.FromArgb(32, 32, 32))
                 {
                     urovenPole[x, y] = 1;
                 }
@@ -624,11 +621,11 @@ namespace ProceduralWorldGenerationV2
                 {
                     urovenPole[x, y] = 1;
                 }
-                else if (pixel == Color.FromArgb(38,38,38))
+                else if (pixel == Color.FromArgb(38, 38, 38))
                 {
                     urovenPole[x, y] = 1;
                 }
-                else if (pixel == Color.FromArgb(40,40,40))
+                else if (pixel == Color.FromArgb(40, 40, 40))
                 {
                     urovenPole[x, y] = 1;
                 }
@@ -698,144 +695,6 @@ namespace ProceduralWorldGenerationV2
         }
         #endregion
 
-        #region Strom() Funkce pro malé dekorace
-        private void Strom(int x, int y)
-        {
-            // Center Pixel
-            barvyPixeluPole[y, x] = Color.FromArgb(0, 97, 0);
-            // Bottom Pixel
-            if (y != grid - 1)
-            {
-                barvyPixeluPole[y + 1, x] = Color.FromArgb(0, 101, 0);
-            }
-            // Top Pixel
-            if (y != 0)
-            {
-                barvyPixeluPole[y - 1, x] = Color.FromArgb(0, 101, 0);
-            }
-            // Right Pixel
-            if (x != grid - 1)
-            {
-                barvyPixeluPole[y, x + 1] = Color.FromArgb(0, 101, 0);
-            }
-            // Left Pixel
-            if (x != 0)
-            {
-                barvyPixeluPole[y, x - 1] = Color.FromArgb(0, 101, 0);
-            }
-        }
-        #endregion
-
-        #region zvetseniBiomu() Funkce pro zvìtšení Biomu
-        private void zvetseniBiomu()
-        {
-
-            {
-                int x = 0;
-                int y = 0;
-                foreach (string biome in biomePole)
-                {
-                    //for (int i = 0; i < grid / 10; i++)
-                    {
-
-                        if (biome == "Desert")
-                        {
-                            biomeHledani("Desert", x, y);
-                        }
-
-                        if (biome == "Snow")
-                        {
-                            biomeHledani("Snow", x, y);
-                        }
-                        x++;
-                        if (x != 0 && x % grid == 0)
-                        {
-                            x = 0;
-                            y++;
-                        }
-                    }
-                }
-
-            }
-
-
-            void biomeHledani(string biome, int x, int y)
-            {
-                if (biomePrepsaniPole[y, x])
-                {
-                    for (int i = 0; i < grid / 10; i++)
-                    {
-                        biomePrepsaniPole[x, y] = false;
-                        // Bottom tile
-                        if (y != grid - 1 && biomePrepsaniPole[y + 1, x])
-                        {
-                            biomePole[y + 1, x] = biome;
-                            biomePrepsaniPole[y + 1, x] = false;
-                        }
-                        // Top tile
-                        if (y != 0 && biomePrepsaniPole[y - 1, x])
-                        {
-                            biomePole[y - 1, x] = biome;
-                            biomePrepsaniPole[y - 1, x] = false;
-                        }
-                        // Right tile
-                        if (x != grid - 1 && biomePrepsaniPole[y, x + 1])
-
-                        {
-                            biomePole[y, x + 1] = biome;
-                            biomePrepsaniPole[y, x + 1] = false;
-                        }
-                        // Left tile
-                        if (x != 0 && biomePrepsaniPole[y, x - 1])
-                        {
-                            biomePole[y, x - 1] = biome;
-                            biomePrepsaniPole[y, x - 1] = false;
-                        }
-                    }
-                }
-            }
-
-            void biomeHledani2(string biome, int x, int y)
-            {
-                if (biomePrepsaniPole[y, x])
-                {
-                    for (int i = 0; i < grid / 10; i++)
-                    {
-                        biomePrepsaniPole[x, y] = false;
-                        // Bottom tile
-                        if (y != grid - 1 && biomePrepsaniPole[y + 1, x])
-                        {
-                            biomePole[y + 1, x] = biome;
-                            biomePrepsaniPole[y + 1, x] = false;
-                        }
-                        // Top tile
-                        if (y != 0 && biomePrepsaniPole[y - 1, x])
-                        {
-                            biomePole[y - 1, x] = biome;
-                            biomePrepsaniPole[y - 1, x] = false;
-                        }
-                        // Right tile
-                        if (x != grid - 1 && biomePrepsaniPole[y, x + 1])
-
-                        {
-                            biomePole[y, x + 1] = biome;
-                            biomePrepsaniPole[y, x + 1] = false;
-                        }
-                        // Left tile
-                        if (x != 0 && biomePrepsaniPole[y, x - 1])
-                        {
-                            biomePole[y, x - 1] = biome;
-                            biomePrepsaniPole[y, x - 1] = false;
-                        }
-                    }
-                }
-            }
-
-
-
-        }
-        #endregion
-
         #region Start() Funkce zahajující vytvoøení svìta
         public void Start()
         {
@@ -853,8 +712,8 @@ namespace ProceduralWorldGenerationV2
             {
                 vetsiHory();
             }
-           
-            
+
+
             // 20x uhladit terén
             for (int i = 2; i < 23; i++)
             {

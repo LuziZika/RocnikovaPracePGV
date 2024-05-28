@@ -46,11 +46,13 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(984, 961);
             Controls.Add(display);
+            Location = new Point(100, 100);
             MaximizeBox = false;
             MaximumSize = new Size(1000, 1000);
             MinimizeBox = false;
             MinimumSize = new Size(1000, 1000);
             Name = "Form1";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
             Load += Form1_Load;
             ResumeLayout(false);
