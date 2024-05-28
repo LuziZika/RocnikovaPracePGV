@@ -94,6 +94,8 @@ namespace ProceduralWorldGenerationV2
                             break;
                         case 10:
                             barva = Color.FromArgb(109, 166, 42);
+                            //if (Random.Shared.Next(10) == 0)
+                                //Strom();
                             break;
                     }
                     break;
@@ -696,6 +698,34 @@ namespace ProceduralWorldGenerationV2
         }
         #endregion
 
+        #region Strom() Funkce pro malé dekorace
+        private void Strom(int x, int y)
+        {
+            // Center Pixel
+            barvyPixeluPole[y, x] = Color.FromArgb(0, 97, 0);
+            // Bottom Pixel
+            if (y != grid - 1)
+            {
+                barvyPixeluPole[y + 1, x] = Color.FromArgb(0, 101, 0);
+            }
+            // Top Pixel
+            if (y != 0)
+            {
+                barvyPixeluPole[y - 1, x] = Color.FromArgb(0, 101, 0);
+            }
+            // Right Pixel
+            if (x != grid - 1)
+            {
+                barvyPixeluPole[y, x + 1] = Color.FromArgb(0, 101, 0);
+            }
+            // Left Pixel
+            if (x != 0)
+            {
+                barvyPixeluPole[y, x - 1] = Color.FromArgb(0, 101, 0);
+            }
+        }
+        #endregion
+
         #region zvetseniBiomu() Funkce pro zvìtšení Biomu
         private void zvetseniBiomu()
         {
@@ -825,12 +855,8 @@ namespace ProceduralWorldGenerationV2
             }
            
             
-
-
-
-
-            // 10x uhladit terén
-            for (int i = 2; i < 22; i++)
+            // 20x uhladit terén
+            for (int i = 2; i < 23; i++)
             {
                 if (Random.Shared.Next(2) == 0)
                     uhlazeniTerenu(i * 2);
