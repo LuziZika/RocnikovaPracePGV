@@ -332,19 +332,25 @@ namespace ProceduralWorldGenerationV2
                             barva = Color.FromArgb(198, 103, 42);
                             break;
                         case 4:
-                            barva = Color.FromArgb(164, 87, 33);
+                            barva = Color.FromArgb(131, 70, 28);
                             break;
                         case 5:
-                            barva = Color.FromArgb(164, 87, 33);
+                            barva = Color.FromArgb(158, 84, 31);
                             break;
                         case 6:
-                            barva = Color.FromArgb(146, 81, 30);
+                            if (Random.Shared.Next(10) == 0)
+                                barva = Color.FromArgb(201, 106, 38);
+                            else barva = Color.FromArgb(158, 84, 31);
                             break;
                         case 7:
-                            barva = Color.FromArgb(131, 70, 27);
+                            if (Random.Shared.Next(10) == 0)
+                                barva = Color.FromArgb(201, 106, 38);
+                            else barva = Color.FromArgb(158, 84, 31);
                             break;
                         case 8:
-                            barva = Color.FromArgb(158, 84, 31);
+                            if (Random.Shared.Next(10) == 0)
+                                barva = Color.FromArgb(201, 106, 38);
+                            else barva = Color.FromArgb(158, 84, 31);
                             break;
                         case 9:
                             barva = Color.FromArgb(167, 88, 33);
@@ -813,11 +819,12 @@ namespace ProceduralWorldGenerationV2
                 }
             }
 
-            vetsiHory();
-            vetsiHory();
-            vetsiHory();
-            vetsiHory();
-            vetsiHory();
+            for (int i = 0; i < 5; i++)
+            {
+                vetsiHory();
+            }
+           
+            
 
 
 
@@ -841,7 +848,7 @@ namespace ProceduralWorldGenerationV2
                     biomePrepsaniPole[x, y] = true;
                 }
             }
-            for (int i = 2; i < grid / 15; i++)
+            for (int i = 2; i < 100; i++)
             {
                 if (Random.Shared.Next(2) == 0)
                     uhlazeniTerenu(i * 2);
@@ -902,6 +909,9 @@ namespace ProceduralWorldGenerationV2
 
         private void display_Paint(object sender, PaintEventArgs e)
         {
+            DateTime time = DateTime.Now;
+
+
             g = e.Graphics;
 
             Task.Run(() =>
@@ -911,6 +921,8 @@ namespace ProceduralWorldGenerationV2
 
             Start();
 
+            DateTime time2 = DateTime.Now;
+            Console.WriteLine(time2 - time);
         }
     }
 }
