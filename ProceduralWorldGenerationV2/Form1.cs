@@ -768,11 +768,9 @@ namespace ProceduralWorldGenerationV2
         {
             while (loading)
             {
-                int RNG = Random.Shared.Next(2);
-                if (RNG == 0)
-                    g.FillRectangle(Brushes.Black, Random.Shared.Next(100) * 10, Random.Shared.Next(100) * 10, 5, 5);
-                else
-                    g.FillRectangle(Brushes.LightGray, Random.Shared.Next(100) * 10, Random.Shared.Next(100) * 10, 5, 5);
+                int RNG = Random.Shared.Next(256);
+                SolidBrush brush = new SolidBrush(Color.FromArgb(RNG, RNG, RNG));
+                g.FillRectangle(brush, Random.Shared.Next(200) * 5, Random.Shared.Next(200) * 5, 5, 5);
 
             }
         }
