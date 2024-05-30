@@ -143,6 +143,96 @@ namespace ProceduralWorldGenerationV2
                     }
                     break;
 
+                case "Tundra":
+                    switch (urovenPole[y, x])
+                    {
+                        case 0:
+                            barva = Color.FromArgb(47, 50, 215);
+                            break;
+                        case 1:
+                            barva = Color.FromArgb(64, 63, 252);
+                            break;
+                        case 2:
+                            barva = Color.FromArgb(107, 135, 95);
+                            break;
+                        case 3:
+                            barva = Color.FromArgb(81, 110, 80);
+                            break;
+                        case 4:
+                            barva = Color.FromArgb(70, 99, 69);
+                            break;
+                        case 5:
+                            barva = Color.FromArgb(90, 119, 89);
+                            break;
+                        case 6:
+                            if (Random.Shared.Next(10) == 0)
+                                barva = Color.FromArgb(112, 143, 111);
+                            else barva = Color.FromArgb(90, 119, 89);
+                            break;
+                        case 7:
+                            if (Random.Shared.Next(10) == 0)
+                                barva = Color.FromArgb(112, 143, 111);
+                            else barva = Color.FromArgb(90, 119, 89);
+                            break;
+                        case 8:
+                            if (Random.Shared.Next(10) == 0)
+                                barva = Color.FromArgb(112, 143, 111);
+                            else barva = Color.FromArgb(90, 119, 89);
+                            break;
+                        case 9:
+                            barva = Color.FromArgb(97, 128, 96);
+                            break;
+                        case 10:
+                            barva = Color.FromArgb(112, 143, 111);
+                            break;
+                    }
+                    break;
+
+                case "Savana":
+                    switch (urovenPole[y, x])
+                    {
+                        case 0:
+                            barva = Color.FromArgb(47, 50, 215);
+                            break;
+                        case 1:
+                            barva = Color.FromArgb(64, 63, 252);
+                            break;
+                        case 2:
+                            barva = Color.FromArgb(103, 122, 57);
+                            break;
+                        case 3:
+                            barva = Color.FromArgb(113, 118, 56);
+                            break;
+                        case 4:
+                            barva = Color.FromArgb(103, 99, 43);
+                            break;
+                        case 5:
+                            barva = Color.FromArgb(124, 120, 58);
+                            break;
+                        case 6:
+                            if (Random.Shared.Next(10) == 0)
+                                barva = Color.FromArgb(149, 145, 72);
+                            else barva = Color.FromArgb(124, 120, 58);
+                            break;
+                        case 7:
+                            if (Random.Shared.Next(10) == 0)
+                                barva = Color.FromArgb(149, 145, 72);
+                            else barva = Color.FromArgb(124, 120, 58);
+                            break;
+                        case 8:
+                            if (Random.Shared.Next(10) == 0)
+                                barva = Color.FromArgb(149, 145, 72);
+                            else barva = Color.FromArgb(124, 120, 58);
+                            break;
+                        case 9:
+                            barva = Color.FromArgb(144, 137, 65);
+                            break;
+                        case 10:
+                            barva = Color.FromArgb(149, 145, 72);
+                            break;
+                    }
+                    break;
+
                 case "Mountain":
                     switch (urovenPole[y, x])
                     {
@@ -656,6 +746,18 @@ namespace ProceduralWorldGenerationV2
                 barvyPixeluPole[x, y] = Color.FromArgb(1, 1, 1);
             }
 
+            else if (Random.Shared.Next(75000) == 0)
+            {
+                biomePole[x, y] = "Savana";
+                barvyPixeluPole[x, y] = Color.FromArgb(1, 1, 1);
+            }
+
+            else if (Random.Shared.Next(75000) == 0)
+            {
+                biomePole[x, y] = "Tundra";
+                barvyPixeluPole[x, y] = Color.FromArgb(1, 1, 1);
+            }
+
             else if (Random.Shared.Next(50000) == 0)
             {
                 biomePole[x, y] = "Desert";
@@ -674,7 +776,7 @@ namespace ProceduralWorldGenerationV2
                 barvyPixeluPole[x, y] = Color.FromArgb(1, 1, 1);
             }
 
-            else if (Random.Shared.Next(50000) == 0)
+            else if (Random.Shared.Next(100000) == 0)
             {
                 biomePole[x, y] = "Mountain";
                 barvyPixeluPole[x, y] = Color.FromArgb(1, 1, 1);
