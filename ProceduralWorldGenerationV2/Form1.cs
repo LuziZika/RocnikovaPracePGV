@@ -153,10 +153,10 @@ namespace ProceduralWorldGenerationV2
                             barva = Color.FromArgb(64, 63, 252);
                             break;
                         case 2:
-                            barva = Color.FromArgb(107, 135, 95);
+                            barva = Color.FromArgb(209, 197, 137);
                             break;
                         case 3:
-                            barva = Color.FromArgb(81, 110, 80);
+                            barva = Color.FromArgb(107, 135, 95);
                             break;
                         case 4:
                             barva = Color.FromArgb(70, 99, 69);
@@ -198,7 +198,7 @@ namespace ProceduralWorldGenerationV2
                             barva = Color.FromArgb(64, 63, 252);
                             break;
                         case 2:
-                            barva = Color.FromArgb(103, 122, 57);
+                            barva = Color.FromArgb(209, 197, 137);
                             break;
                         case 3:
                             barva = Color.FromArgb(113, 118, 56);
