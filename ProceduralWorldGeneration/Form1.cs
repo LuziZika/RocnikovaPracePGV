@@ -14,8 +14,8 @@ namespace ProceduralWorldGeneration
         Color barva;
         int RGB;
 
-        PictureBox[,] pictureBoxPole = new PictureBox[100, 100];
-        int[,] urovenPole = new int[100, 100];
+        PictureBox[,] pictureBoxPole = new PictureBox[50, 50];
+        int[,] urovenPole = new int[50, 50];
 
         // Funkce pro generaci PictureBoxů
         private void novyPixel(bool novy, int y, int x, Point location)
