@@ -16,7 +16,6 @@ namespace ProceduralWorldGenerationV2
         Graphics g;
 
         string[,] biomePole;
-        bool[,] biomePrepsaniPole;
         Color[,] barvyPixeluPole;
         int[,] urovenPole;
         #endregion
@@ -806,7 +805,6 @@ namespace ProceduralWorldGenerationV2
                 {
                     generaceBarev(x, y);
                     // pøipravení pole pro biomi
-                    biomePrepsaniPole[x, y] = true;
                 }
             }
 
@@ -832,7 +830,6 @@ namespace ProceduralWorldGenerationV2
                 for (int x = 0; x < grid; x++)
                 {
                     generaceBiome(x, y);
-                    biomePrepsaniPole[x, y] = true;
                 }
             }
             for (int i = 2; i < 100; i++)
@@ -887,7 +884,6 @@ namespace ProceduralWorldGenerationV2
         {
             sirkaVyska = 1000 / grid;
             biomePole = new string[grid, grid];
-            biomePrepsaniPole = new bool[grid, grid];
             barvyPixeluPole = new Color[grid, grid];
             urovenPole = new int[grid, grid];
         }
